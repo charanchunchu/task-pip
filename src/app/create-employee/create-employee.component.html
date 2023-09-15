@@ -1,0 +1,85 @@
+<div class="candiate ">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="p-5">
+    <p class="Add-emplyee-deatils">Add Employee Details</p>
+    <div class="row">
+      <div class="col"> <label class="contact-label" for="Id">ID</label>
+        <input class="contact-label" type="text" id="Id" formControlName="Id">
+        <div class="error-message"
+          *ngIf="employeeForm.get('Id')?.hasError('required') && employeeForm.get('Id')?.touched">
+          ID is required
+        </div>
+      </div>
+      <div class="col">
+        <label class="contact-label" for="Name">Name</label>
+        <input class="contact-label" type="text" id="Name" formControlName="Name">
+        <div class="error-message"
+          *ngIf="employeeForm.get('Name')?.hasError('required') && employeeForm.get('Name')?.touched">
+          NAME is required
+        </div>
+      </div>
+      <div class="col">
+        <label class="contact-label" for="Email">Email</label>
+        <input class="contact-label" type="text" id="Email" formControlName="Email">
+        <div class="error-message"
+          *ngIf="employeeForm.get('Email')?.hasError('required') && employeeForm.get('Email')?.touched">
+          EMAIL is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="contact-label" for="Mobile">Mobile</label>
+        <input class="contact-label" type="text" id="Mobile" formControlName="Mobile">
+        <div class="error-message"
+          *ngIf="employeeForm.get('Mobile')?.hasError('required') && employeeForm.get('Mobile')?.touched">
+          MOBILE is required
+        </div>
+      </div>
+      <div class="col">
+        <label class="contact-label" for="EmployeeActivateDate">EmployeeActivateDate</label>
+        <input class="contact-label" type="text" id="EmployeeActivateDate" formControlName="EmployeeActivateDate">
+        <div class="error-message"
+          *ngIf="employeeForm.get('EmployeeActivateDate')?.hasError('required') && employeeForm.get('EmployeeActivateDate')?.touched">
+          employeeActivateDate is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="contact-label" for="EmployeeDOB">EmployeeDOB</label>
+        <input class="contact-label" type="text" id="EmployeeDOB" formControlName="EmployeeDOB">
+        <div class="error-message"
+          *ngIf="employeeForm.get('EmployeeDOB')?.hasError('required') && employeeForm.get('EmployeeDOB')?.touched">
+          EmployeeDOB is required
+        </div>
+      </div>
+      <div class="col">
+        <label class="contact-label" for="TaskId">TaskId</label>
+        <input class="contact-label" type="text" id="TaskId" formControlName="TaskId">
+        <div class="error-message"
+          *ngIf="employeeForm.get('TaskId')?.hasError('required') && employeeForm.get('TaskId')?.touched">
+          TaskId is required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label class="contact-label" for="TaskStartDate">TaskStartDate</label>
+        <input class="contact-label" type="text" id="TaskStartDate" formControlName="TaskStartDate">
+        <div class="error-message"
+          *ngIf="employeeForm.get('TaskStartDate')?.hasError('required') && employeeForm.get('TaskStartDate')?.touched">
+          TaskStartDate is required
+        </div>
+      </div>
+      <div class="col">
+        <label class="contact-label" for="TaskEndDate">TaskEndDate</label>
+        <input class="contact-label" type="text" id="TaskEndDate" formControlName="TaskEndDate">
+        <div class="error-message"
+          *ngIf="employeeForm.get('TaskEndDate')?.hasError('required') && employeeForm.get('TaskEndDate')?.touched">
+          TaskEndDate is required
+        </div>
+      </div>
+    </div>
+    <button class="submit-btn mt-4 button" type="submit" mat-dialog-close>Create </button>
+  </form>
+</div>
