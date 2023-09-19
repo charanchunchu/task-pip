@@ -54,7 +54,6 @@ ngOnInit() {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.details = this.details.filter((item) => {
-      // Modify this filter logic based on your requirements
       return (
         item.Name.toLowerCase().includes(filterValue) ||
         item.Email.toLowerCase().includes(filterValue) ||
