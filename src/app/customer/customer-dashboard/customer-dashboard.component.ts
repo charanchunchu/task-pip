@@ -4,17 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateEmployeeComponent } from '../create-employee/create-employee.component';
 import { ViewEmployeeComponent } from '../view-employee/view-employee.component';
-export interface PeriodicElement {
-  ID: number;
-  NAME: string;
-  EMAIL: string;
-  MOBILE: string;
-  EmployeeActivateDate: Date;
-  EmployeeDOB: Date;
-  TaskId: number;
-  TaskStartDate: Date;
-  TaskEndDate: Date;
-}
+import {PeriodicElement} from './customer-interface';
 @Component({
   selector: 'app-customer-dashboard',
   templateUrl: './customer-dashboard.component.html',
@@ -63,7 +53,7 @@ ngOnInit() {
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {
-      height: '10%',
+      height: '20%',
       width: '50%',
       data: this.clickedRowData
     });
