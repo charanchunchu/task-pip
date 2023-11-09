@@ -1,14 +1,22 @@
-table {
-  width: 100%;
+.people-bg{
+  display:table;
+  width:28%;
+  height:200px;
 }
-.button{
-  border-radius: 22px;
-  background: #A72037;
-  color: #ffffff !important;
-  cursor: pointer;
-  border: 0px solid;
-  width: 66px;
-  height: 35px;
-  font-weight: 400;
+
+.people-text{
+  vertical-align: middle;
+  display: table-cell;
   text-align: center;
+
+}
+.ptg-welcom{
+  font-weight: 500;
+  font-size: 22px;
+}
+.ptg-dashboard{
+  height: 90vh;
+}
+.ptg-log-button{
+  border-color:  #a72037;
 }

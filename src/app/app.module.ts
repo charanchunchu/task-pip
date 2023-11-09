@@ -4,18 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from './shared/material.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ClientAuthGuard } from './AuthGuard/ClientAuthGuard';
+import { AuthenticateService } from './AuthGuard/authenticate.service';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    CreateEmployeeComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
     ],
-  providers: [],
+    providers: [ClientAuthGuard,AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

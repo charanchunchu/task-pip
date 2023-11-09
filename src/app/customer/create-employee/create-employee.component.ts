@@ -24,12 +24,11 @@ export class CreateEmployeeComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.employees = JSON.parse(localStorage.getItem('canidateDetails'));
+    this.employees = JSON.parse(localStorage.getItem('candidateDetails'));
   }
   onSubmit() {
-    console.log(this.employeeForm.value);
       this.employees.push(this.employeeForm.value);
-      localStorage.setItem('canidateDetails', JSON.stringify(this.employees));
+      localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
       this.snackBar.open('candidateDetails Add successfully!', 'Close', {
         duration: 3000,
       });
