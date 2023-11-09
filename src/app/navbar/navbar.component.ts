@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginComponent } from '../login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -8,13 +8,21 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  userRole: any
-  constructor(public dialog: MatDialog) {}
-  openLoginDialog(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.width = '400px';
-    const dialogRef = this.dialog.open(LoginComponent, dialogConfig);
+  userStatus: any
+  constructor(private router: Router) {}
+  ngOnInit(){
+    this.userStatus=sessionStorage.getItem('user_Status');
+    console.log(this.userStatus);
+    
+  }
+  signOut(): void {
+    sessionStorage.setItem('user_Status', 'sigout');
+    sessionStorage.setItem('userRole', '');
+    this.router.navigate(['/']);
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.width = '400px';
+    // const dialogRef = this.dialog.open(LoginComponent, dialogConfig);
   }
 }
 

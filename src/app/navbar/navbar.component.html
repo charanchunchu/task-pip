@@ -2,7 +2,7 @@
   <div class="navbar-logo">
     <img src="../../assets/ptg-logo.png" alt="Logo" />
   </div>
-  <div class="navbar-sign-in">
-    <button class="sign-in-button" (click)="openLoginDialog()">Sign In</button>
+  <div class="navbar-sign-in" *ngIf="userStatus=='signin'">
+    <button class="sign-in-button" (click)="signOut()">Sign out</button>
   </div>
 </div>

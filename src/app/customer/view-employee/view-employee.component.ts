@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PeriodicElement } from '../customer-dashboard/customer-interface';
+import { PeriodicElement } from '../../dashboard/customer-interface';
 
 @Component({
   selector: 'app-view-employee',
