@@ -28,9 +28,8 @@ export class CreateEmployeeComponent implements OnInit {
     });
     if (data != null) {
       this.isEditForm = true;
-      console.log("data", data);
       this.employeeForm.patchValue({
-        id: data["Id"], Name: data["Name"],
+        Id: data["Id"], Name: data["Name"],
         Email: data["Email"],
         Mobile: data["Mobile"],
         EmployeeActivateDate: data["EmployeeActivateDate"],
@@ -46,12 +45,10 @@ export class CreateEmployeeComponent implements OnInit {
     this.employees = JSON.parse(localStorage.getItem('candidateDetails'));
   }
   onSubmit() {
-    if (!("Id" in this.employeeForm.value)) {
-      this.employeeForm.value["Id"] = uuid();
+    if (this.employeeForm.value["Id"] === '') {
+      this.employeeForm.patchValue({"Id": uuid()});
     }
     const index = this.employees.findIndex(item => item["Id"] === this.employeeForm.value["Id"]);
-    console.log("index", index);
-    console.log("index", this.employees);
     if (index !== -1) {
       this.employees[index] = this.employeeForm.value;
     } else {
