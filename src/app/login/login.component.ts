@@ -9,7 +9,7 @@ import { AuthenticateService } from '../authGuard/authenticate.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  constructor(private router: Router, private authService: AuthenticateService) {}
+  constructor(private router: Router, private authService: AuthenticateService) { }
   username: string = '';
   password: string = '';
   ngOnInit() {
