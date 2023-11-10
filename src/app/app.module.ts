@@ -10,8 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ClientAuthGuard } from './AuthGuard/ClientAuthGuard';
-import { AuthenticateService } from './AuthGuard/authenticate.service';
+import { ClientAuthGuard } from './authGuard/ClientAuthGuard';
+import { AuthenticateService } from './authGuard/authenticate.service';
 import { CommonModule } from '@angular/common';
 
 

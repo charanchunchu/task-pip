@@ -22,14 +22,9 @@ ngOnInit() {
     this.candidate_details();
     this.userRole=sessionStorage.getItem('userRole');
 console.log(this.userRole);
-
   }
 
   candidate_details() {
-    // this.http.get<any[]>('../../assets/json/details.json').subscribe((data:any) => {
-    //   this.details = data;
-    //   localStorage.setItem('candidateDetails',JSON.stringify(data));
-    // });
     this.details = JSON.parse(localStorage.getItem('candidateDetails'));
   }
   displayedColumns: string[] = ['S.NO', 'Name', 'Email', 'Mobile','EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate','TaskEndDate','icon','edit','delete'];
@@ -81,7 +76,7 @@ console.log(this.userRole);
         width: '50%',
         data: data[index]
       });
-  
+
       dialogRef.afterClosed().subscribe(()=>{
         this.details = JSON.parse(localStorage.getItem('candidateDetails'));
       });

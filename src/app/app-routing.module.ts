@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ClientAuthGuard } from './AuthGuard/ClientAuthGuard';
+import { ClientAuthGuard } from './authGuard/ClientAuthGuard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -11,12 +11,7 @@ const routes: Routes = [
     path: 'Customer',
     canActivate: [ClientAuthGuard],
     loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule)
-  },
-  // {
-  //   path: 'admin',
-  //   canActivate: [ClientAuthGuard],
-  //   loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  // }
+  }
 ];
 
 @NgModule({

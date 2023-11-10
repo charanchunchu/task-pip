@@ -13,16 +13,12 @@ export class NavbarComponent {
   ngOnInit(){
     this.userStatus=sessionStorage.getItem('user_Status');
     console.log(this.userStatus);
-    
+
   }
   signOut(): void {
     sessionStorage.setItem('user_Status', 'sigout');
     sessionStorage.setItem('userRole', '');
     this.router.navigate(['/']);
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.width = '400px';
-    // const dialogRef = this.dialog.open(LoginComponent, dialogConfig);
   }
 }
 

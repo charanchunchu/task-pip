@@ -2,13 +2,6 @@
   <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="p-5">
     <p class="Add-emplyee-deatils">{{isEditForm == false ? 'Add Employee Details' : 'Edit Employee Details'}}</p>
     <div class="row">
-      <!-- <div class="col"> <label class="contact-label" for="Id">ID</label>
-        <input class="contact-label" type="text" id="Id" formControlName="Id">
-        <div class="error-message"
-          *ngIf="employeeForm.get('Id')?.hasError('required') && employeeForm.get('Id')?.touched">
-          ID is required
-        </div>
-      </div> -->
       <div class="col">
         <label class="contact-label" for="Name">Name</label>
         <input class="contact-label" type="text" id="Name" formControlName="Name">
