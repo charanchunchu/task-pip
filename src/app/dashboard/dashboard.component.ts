@@ -16,7 +16,7 @@ export class DashboardComponent {
   employees:any[]=[];
   public userRole;
   filteredDetails: any[] = [];
-    constructor(private http: HttpClient,public dialog: MatDialog,private _snackBar: MatSnackBar) {
+    constructor(private http: HttpClient,public dialog: MatDialog,private snackBar: MatSnackBar) {
   }
 ngOnInit() {
     this.candidate_details();
@@ -26,17 +26,18 @@ console.log(this.userRole);
   }
 
   candidate_details() {
-    this.http.get<any[]>('../../assets/json/details.json').subscribe((data:any) => {
-      this.details = data;
-      localStorage.setItem('candidateDetails',JSON.stringify(data));
-    });
+    // this.http.get<any[]>('../../assets/json/details.json').subscribe((data:any) => {
+    //   this.details = data;
+    //   localStorage.setItem('candidateDetails',JSON.stringify(data));
+    // });
+    this.details = JSON.parse(localStorage.getItem('candidateDetails'));
   }
-  displayedColumns: string[] = ['Id', 'Name', 'Email', 'Mobile','EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate','TaskEndDate','icon','edit'];
+  displayedColumns: string[] = ['S.NO', 'Name', 'Email', 'Mobile','EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate','TaskEndDate','icon','edit','delete'];
 
 
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-      height: '58%',
+      height: '70%',
       width: '50%',
     });
 
@@ -69,6 +70,47 @@ console.log(this.userRole);
   const userRole=sessionStorage.getItem('userRole');
   return userRole;
   }
+
+  editEmployee(row: PeriodicElement){
+    if(this.userRole == "admin"){
+      this.clickedRowData = row;
+      const data = JSON.parse(localStorage.getItem('candidateDetails'));
+      const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
+      let dialogRef = this.dialog.open(CreateEmployeeComponent, {
+        height: '70%',
+        width: '50%',
+        data: data[index]
+      });
+  
+      dialogRef.afterClosed().subscribe(()=>{
+        this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+      });
+    }
+  else{
+    this.snackBar.open("You don't have admin permissions", 'Close', {
+      duration: 3000,
+    });
+  }
+}
+
+deleteEmployee(row: PeriodicElement){
+  if(this.userRole == "admin"){
+    this.clickedRowData = row;
+    const data = JSON.parse(localStorage.getItem('candidateDetails'));
+    const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
+    if(index !==-1){
+      data.pop(index);
+      localStorage.setItem('candidateDetails', JSON.stringify(data));
+      this.employees = data;
+      this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+    }
+  }
+else{
+  this.snackBar.open("You don't have admin permissions", 'Close', {
+    duration: 3000,
+  });
+}
+}
 }
 
 
