@@ -45,17 +45,22 @@ export class CreateEmployeeComponent implements OnInit {
     this.employees = JSON.parse(localStorage.getItem('candidateDetails'));
   }
   onSubmit() {
-    if (this.employeeForm.value["Id"] === '') {
-      this.employeeForm.patchValue({"Id": uuid()});
+    if (!this.employeeForm.value["Id"]) {
+      this.employeeForm.patchValue({ "Id": uuid() });
     }
-    const index = this.employees.findIndex(item => item["Id"] === this.employeeForm.value["Id"]);
+    const updatedEmployee = this.employeeForm.value;
+    const index = this.employees.findIndex(item => item["Id"] === updatedEmployee["Id"]);
     if (index !== -1) {
-      this.employees[index] = this.employeeForm.value;
+      this.employees[index] = updatedEmployee;
+      this.showMessage('candidateDetails update successfully!');
     } else {
-      this.employees.push(this.employeeForm.value);
+      this.employees.push(updatedEmployee);
+      this.showMessage('candidateDetails Add successfully!');
     }
     localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
-    this.snackBar.open('candidateDetails Add successfully!', 'Close', {
+  }
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Close', {
       duration: 3000,
     });
   }
