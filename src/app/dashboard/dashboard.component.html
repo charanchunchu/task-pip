@@ -3,7 +3,7 @@
   <div class="row mt-5" *ngIf="userRole=='admin'">
     <div class="col">
       <div class="button">
-        <button mat-button (click)="openDialog()">ADD</button>
+        <button mat-button (click)="openDialog()" class="add-btn">ADD</button>
       </div>
     </div>
     <div class="col">
@@ -11,6 +11,7 @@
     </div>
   </div>
   <div class="container mt-5">
+    <ng-container *ngIf="details.length > 0; else emptyTable">
     <table mat-table [dataSource]="details" class="mat-elevation-z8">
       <ng-container matColumnDef="S.NO">
         <th mat-header-cell *matHeaderCellDef> S.NO </th>
@@ -76,6 +77,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+  </ng-container>
+  <ng-template #emptyTable>
+    <div class="empty-table-message">
+      <p>No records found.</p>
+    </div>
+  </ng-template>
 
   </div>
 </div>

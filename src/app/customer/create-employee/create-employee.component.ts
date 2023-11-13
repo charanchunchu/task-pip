@@ -42,14 +42,21 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employees = JSON.parse(localStorage.getItem('candidateDetails'));
+    const storedEmployees = JSON.parse(localStorage.getItem('candidateDetails'));
+    this.employees = storedEmployees || [];
   }
+
   onSubmit() {
     if (!this.employeeForm.value["Id"]) {
       this.employeeForm.patchValue({ "Id": uuid() });
     }
     const updatedEmployee = this.employeeForm.value;
-    const index = this.employees.findIndex(item => item["Id"] === updatedEmployee["Id"]);
+
+    if (!this.employees) {
+      this.employees = [];
+    }
+
+    const index = this.employees.findIndex(item => item && item["Id"] === updatedEmployee["Id"]);
     if (index !== -1) {
       this.employees[index] = updatedEmployee;
       this.showMessage('candidateDetails update successfully!');
@@ -59,6 +66,7 @@ export class CreateEmployeeComponent implements OnInit {
     }
     localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
   }
+
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
