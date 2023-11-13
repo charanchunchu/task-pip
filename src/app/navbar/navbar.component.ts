@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   userStatus: any;
   userRole:any;
-  constructor(private router: Router) { }
+  constructor(private router: Router,private snackBar: MatSnackBar) { }
   ngOnInit() {
     this.userStatus = sessionStorage.getItem('user_Status');
     this.userRole = sessionStorage.getItem('userRole');
@@ -18,6 +19,9 @@ export class NavbarComponent {
     sessionStorage.setItem('user_Status', 'signOut');
     sessionStorage.setItem('userRole', '');
     this.router.navigate(['/']);
+    this.snackBar.open("You have successful logout", 'Close', {
+      duration: 3000,
+    });
   }
 }
 

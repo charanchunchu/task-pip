@@ -96,18 +96,17 @@ export class DashboardComponent {
       const data = JSON.parse(localStorage.getItem('candidateDetails'));
       const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
       if (index !== -1) {
-        data.pop(index);
+        data.splice(index, 1);
         localStorage.setItem('candidateDetails', JSON.stringify(data));
-        this.employees = data;
         this.details = JSON.parse(localStorage.getItem('candidateDetails'));
       }
-    }
-    else {
+    } else {
       this.snackBar.open("You don't have admin permissions", 'Close', {
         duration: 3000,
       });
     }
   }
+
 }
 
 
