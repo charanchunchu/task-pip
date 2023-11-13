@@ -1,8 +1,20 @@
-<div class="navbar">
-  <div class="navbar-logo">
-    <img src="../../assets/ptg-logo.png" alt="Logo" />
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand navbar-logo" href="#"><img src="../../assets/ptg-logo.png" alt="Logo" /></a>
+  <div class="d-flex order-sm-1 ms-auto pe-2" *ngIf="userStatus=='signin'">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item mx-2">
+        <a href="#" data-bs-toggle="dropdown" class="nav-link dropdown-toggle" id="iconToggle">
+          <span class="newrole">{{userRole}}</span>
+         <img src="../../assets/user.jpg" alt="" class="user-pic">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink2">
+          <li><a class="dropdown-item ms-auto" (click)="signOut()">Sign Out</a></li>
+        </ul>
+      </li>
+    </ul>
   </div>
-  <div class="navbar-sign-in" *ngIf="userStatus=='signin'">
-    <button class="sign-in-button" (click)="signOut()">Sign out</button>
-  </div>
-</div>
+</nav>
