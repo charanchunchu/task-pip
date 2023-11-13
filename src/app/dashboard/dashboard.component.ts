@@ -32,7 +32,7 @@ export class DashboardComponent {
 
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-      height: '70%',
+      height: '55%',
       width: '50%',
     });
 
@@ -74,7 +74,7 @@ export class DashboardComponent {
       const data = JSON.parse(localStorage.getItem('candidateDetails'));
       const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
       let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-        height: '70%',
+        height: '55%',
         width: '50%',
         data: data[index]
       });

@@ -19,4 +19,7 @@ constructor(private dialogRef: MatDialogRef<ViewEmployeeComponent>,
 onClose() {
   this.dialogRef.close();
 }
+close(){
+  this.dialogRef.close();
+}
 }

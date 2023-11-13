@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="row mt-5" *ngIf="userRole=='admin'">
+  <div class="row mt-5 mx-auto" *ngIf="userRole=='admin'">
     <div class="col">
       <div class="button">
         <button mat-button (click)="openDialog()" class="add-btn">ADD</button>
       </div>
     </div>
-    <div class="col">
-      <input class="input-fliter mt-4" matInput (input)="applyFilter($event)" placeholder="Filter">
+    <div class="col text-end">
+      <input class="input-fliter" matInput (input)="applyFilter($event)" placeholder="Filter the data">
     </div>
   </div>
   <div class="container mt-5">
