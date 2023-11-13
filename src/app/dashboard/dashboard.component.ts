@@ -40,15 +40,19 @@ export class DashboardComponent {
       this.details = JSON.parse(localStorage.getItem('candidateDetails'));
     });
   }
-  applyFilter(event: Event) {
+   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.details = this.details.filter((item) => {
-      return (
-        item.Name.toLowerCase().includes(filterValue) ||
-        item.Email.toLowerCase().includes(filterValue) ||
-        item.Mobile.includes(filterValue)
-      );
-    });
+    if (!filterValue || filterValue === '') {
+      this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+    } else {
+      this.details = this.details.filter((item) => {
+        return (
+          item.Name.toLowerCase().includes(filterValue) ||
+          item.Email.toLowerCase().includes(filterValue) ||
+          item.Mobile.includes(filterValue)
+        );
+      });
+    }
   }
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
