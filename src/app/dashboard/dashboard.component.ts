@@ -53,8 +53,6 @@ export class DashboardComponent {
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {
-      height: '20%',
-      width: '50%',
       data: this.clickedRowData
     });
     dialogRef.afterClosed().subscribe(() => {

@@ -1,51 +1,11 @@
-<div>
-  <h2 class="employ">Employee Details</h2>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <p>Name:{{employeeData.Name}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>Email:{{employeeData.Email}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>Mobile:{{employeeData.Mobile}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>EmployeeActivateDate:{{employeeData.EmployeeActivateDate}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>EmployeeDOB:{{employeeData.EmployeeDOB}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>TaskId:{{employeeData.TaskId}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>TaskStartDate:{{employeeData.TaskStartDate}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>TaskEndDate:{{employeeData.TaskEndDate}}</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="container bootstrap snippets bootdey">
+<div class="container mt-4">
   <div class="panel-body inf-content">
       <div class="row">
           <div class="col-md-4">
-              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario">
-              <ul title="Ratings" class="list-inline ratings text-center">
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-              </ul>
+              <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Information">
           </div>
-          <div class="col-md-6">
-              <strong>Information</strong><br>
+          <div class="col-md-8">
+              <strong class="inf-title">Information</strong><br>
               <div class="table-responsive">
               <table class="table table-user-information">
                   <tbody>
@@ -53,33 +13,33 @@
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                  Identificacion
+                                  Name:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              123456789
+                            {{employeeData.Name}}
                           </td>
                       </tr>
                       <tr>
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-user  text-primary"></span>
-                                  Name
+                                  Email:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              Bootdey
+                            {{employeeData.Email}}
                           </td>
                       </tr>
                       <tr>
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-cloud text-primary"></span>
-                                  Lastname
+                                  Mobile:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              Bootstrap
+                            {{employeeData.Mobile}}
                           </td>
                       </tr>
 
@@ -87,11 +47,11 @@
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-bookmark text-primary"></span>
-                                  Username
+                                  EmployeeActivateDate:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              bootnipets
+                            {{employeeData.EmployeeActivateDate}}
                           </td>
                       </tr>
 
@@ -100,44 +60,44 @@
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-eye-open text-primary"></span>
-                                  Role
+                                  EmployeeDOB:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              Admin
+                            {{employeeData.EmployeeDOB}}
                           </td>
                       </tr>
                       <tr>
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-envelope text-primary"></span>
-                                  Email
+                                  TaskId:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              noreply@email.com
+                            {{employeeData.TaskId}}
                           </td>
                       </tr>
                       <tr>
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                  created
+                                  TaskStartDate:
                               </strong>
                           </td>
                           <td class="text-primary">
-                              20 jul 20014
+                            {{employeeData.TaskStartDate}}
                           </td>
                       </tr>
                       <tr>
                           <td>
                               <strong>
                                   <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                  Modified
+                                  TaskEndDate:
                               </strong>
                           </td>
                           <td class="text-primary">
-                               20 jul 20014 20:00:00
+                            {{employeeData.TaskEndDate}}
                           </td>
                       </tr>
                   </tbody>
@@ -146,4 +106,4 @@
           </div>
       </div>
   </div>
-  </div>                 
+  </div>
