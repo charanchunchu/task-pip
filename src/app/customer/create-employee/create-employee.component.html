@@ -31,7 +31,7 @@
       </div>
       <div class="col">
         <label class="contact-label" for="EmployeeActivateDate">EmployeeActivateDate</label>
-        <input class="contact-label" type="text" id="EmployeeActivateDate" formControlName="EmployeeActivateDate">
+        <input class="contact-label" type="date" id="EmployeeActivateDate" formControlName="EmployeeActivateDate">
         <div class="error-message"
           *ngIf="employeeForm.get('EmployeeActivateDate')?.hasError('required') && employeeForm.get('EmployeeActivateDate')?.touched">
           employeeActivateDate is required
@@ -41,7 +41,7 @@
     <div class="row">
       <div class="col">
         <label class="contact-label" for="EmployeeDOB">EmployeeDOB</label>
-        <input class="contact-label" type="text" id="EmployeeDOB" formControlName="EmployeeDOB">
+        <input class="contact-label" type="date" id="EmployeeDOB" formControlName="EmployeeDOB">
         <div class="error-message"
           *ngIf="employeeForm.get('EmployeeDOB')?.hasError('required') && employeeForm.get('EmployeeDOB')?.touched">
           EmployeeDOB is required
@@ -59,7 +59,7 @@
     <div class="row">
       <div class="col">
         <label class="contact-label" for="TaskStartDate">TaskStartDate</label>
-        <input class="contact-label" type="text" id="TaskStartDate" formControlName="TaskStartDate">
+        <input class="contact-label" type="date" id="TaskStartDate" formControlName="TaskStartDate">
         <div class="error-message"
           *ngIf="employeeForm.get('TaskStartDate')?.hasError('required') && employeeForm.get('TaskStartDate')?.touched">
           TaskStartDate is required
@@ -67,7 +67,7 @@
       </div>
       <div class="col">
         <label class="contact-label" for="TaskEndDate">TaskEndDate</label>
-        <input class="contact-label" type="text" id="TaskEndDate" formControlName="TaskEndDate">
+        <input class="contact-label" type="date" id="TaskEndDate" formControlName="TaskEndDate">
         <div class="error-message"
           *ngIf="employeeForm.get('TaskEndDate')?.hasError('required') && employeeForm.get('TaskEndDate')?.touched">
           TaskEndDate is required
