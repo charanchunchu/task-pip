@@ -14,7 +14,7 @@ export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   employees: any[] = [];
   isEditForm: boolean = false;
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
     this.employeeForm = this.fb.group({
       Id: ['', Validators.required],
       Name: ['', Validators.required],
@@ -71,5 +71,8 @@ export class CreateEmployeeComponent implements OnInit {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
     });
+  }
+  close() {
+    this.dialogRef.close();
   }
 }

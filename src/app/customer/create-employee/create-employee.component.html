@@ -1,6 +1,5 @@
 <div class="candiate p-4">
-  <div class="text-end close" click="close()"> <mat-icon >close</mat-icon>
-  </div>
+  <div class="text-end close" (click)="close()"> <mat-icon>close</mat-icon></div>
   <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <p class="Add-emplyee-deatils">{{isEditForm == false ? 'Add Employee Details' : 'Edit Employee Details'}}</p>
     <div class="row">

@@ -91,6 +91,7 @@ export class DashboardComponent {
   }
 
   deleteEmployee(row: PeriodicElement) {
+    alert("Do u want delete");
     if (this.userRole == "admin") {
       this.clickedRowData = row;
       const data = JSON.parse(localStorage.getItem('candidateDetails'));
