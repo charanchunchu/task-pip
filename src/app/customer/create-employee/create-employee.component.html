@@ -1,80 +1,104 @@
 <div class="candiate p-4">
-  <div class="text-end close" (click)="close()"> <mat-icon>close</mat-icon></div>
+  <div class="text-end close" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </div>
   <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <p class="Add-emplyee-deatils">{{isEditForm == false ? 'Add Employee Details' : 'Edit Employee Details'}}</p>
     <div class="row">
       <div class="col">
-        <label class="contact-label" for="Name">Name</label>
-        <input class="contact-label" type="text" id="Name" formControlName="Name">
-        <div class="error-message"
-          *ngIf="employeeForm.get('Name')?.hasError('required') && employeeForm.get('Name')?.touched">
-          NAME is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name </mat-label>
+          <input type="text" matInput placeholder="Enter your Name" formControlName="Name">
+          <mat-error *ngIf="employeeForm?.get('Name')?.hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="col">
-        <label class="contact-label" for="Email">Email</label>
-        <input class="contact-label" type="text" id="Email" formControlName="Email">
-        <div class="error-message"
-          *ngIf="employeeForm.get('Email')?.hasError('required') && employeeForm.get('Email')?.touched">
-          EMAIL is required
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class="contact-label" for="Mobile">Mobile</label>
-        <input class="contact-label" type="text" id="Mobile" formControlName="Mobile">
-        <div class="error-message"
-          *ngIf="employeeForm.get('Mobile')?.hasError('required') && employeeForm.get('Mobile')?.touched">
-          MOBILE is required
-        </div>
-      </div>
-      <div class="col">
-        <label class="contact-label" for="EmployeeActivateDate">EmployeeActivateDate</label>
-        <input class="contact-label" type="date" id="EmployeeActivateDate" formControlName="EmployeeActivateDate">
-        <div class="error-message"
-          *ngIf="employeeForm.get('EmployeeActivateDate')?.hasError('required') && employeeForm.get('EmployeeActivateDate')?.touched">
-          employeeActivateDate is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email </mat-label>
+          <input type="email" matInput placeholder="Enter your email" formControlName="Email">
+
+          <mat-error *ngIf="employeeForm?.get('Email')?.hasError('required')">
+            Email is required
+          </mat-error>
+          <mat-error *ngIf="employeeForm?.get('Email')?.hasError('pattern')">
+            Enter a valid email address
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label class="contact-label" for="EmployeeDOB">EmployeeDOB</label>
-        <input class="contact-label" type="date" id="EmployeeDOB" formControlName="EmployeeDOB">
-        <div class="error-message"
-          *ngIf="employeeForm.get('EmployeeDOB')?.hasError('required') && employeeForm.get('EmployeeDOB')?.touched">
-          EmployeeDOB is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Number </mat-label>
+          <input type="number" matInput placeholder="Enter your number" formControlName="Mobile">
+          <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('required')">
+            Mobile Number is required
+          </mat-error>
+          <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('pattern')">
+            Enter a valid mobile number
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="col">
-        <label class="contact-label" for="TaskId">TaskId</label>
-        <input class="contact-label" type="text" id="TaskId" formControlName="TaskId">
-        <div class="error-message"
-          *ngIf="employeeForm.get('TaskId')?.hasError('required') && employeeForm.get('TaskId')?.touched">
-          TaskId is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Employee Activate Date </mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="EmployeeActivateDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="employeeForm?.get('EmployeeActivateDate')?.hasError('required')">
+            Employee Activate Date is required
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label class="contact-label" for="TaskStartDate">TaskStartDate</label>
-        <input class="contact-label" type="date" id="TaskStartDate" formControlName="TaskStartDate">
-        <div class="error-message"
-          *ngIf="employeeForm.get('TaskStartDate')?.hasError('required') && employeeForm.get('TaskStartDate')?.touched">
-          TaskStartDate is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Employee DOB</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="EmployeeDOB">
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="employeeForm?.get('EmployeeDOB')?.hasError('required')">
+            Employee Dob is required
+          </mat-error>
+        </mat-form-field>
       </div>
       <div class="col">
-        <label class="contact-label" for="TaskEndDate">TaskEndDate</label>
-        <input class="contact-label" type="date" id="TaskEndDate" formControlName="TaskEndDate">
-        <div class="error-message"
-          *ngIf="employeeForm.get('TaskEndDate')?.hasError('required') && employeeForm.get('TaskEndDate')?.touched">
-          TaskEndDate is required
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Task ID </mat-label>
+          <input type="number" matInput placeholder="Enter your number" formControlName="TaskId">
+          <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
+            TaskId is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label> Task Start Date</mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="TaskStartDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
+            TaskId is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label> Task End Date</mat-label>
+          <input matInput [matDatepicker]="picker3" formControlName="TaskEndDate">
+          <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+          <mat-error *ngIf="employeeForm?.get('TaskEndDate')?.hasError('required')">
+            TaskEnd Date is required
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <button class="submit-btn mt-4 button" type="submit"
       mat-dialog-close>{{isEditForm == false ? 'Create' : 'Update'}}</button>
   </form>
-</div>

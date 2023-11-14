@@ -18,8 +18,8 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeForm = this.fb.group({
       Id: ['', Validators.required],
       Name: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      Mobile: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      Email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]],
+      Mobile: ['', [Validators.required,  Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       EmployeeActivateDate: ['', Validators.required],
       EmployeeDOB: ['', Validators.required],
       TaskId: ['', Validators.required],
@@ -47,6 +47,8 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.employeeForm.valid);
+    if(this.employeeForm.valid){
     if (!this.employeeForm.value["Id"]) {
       this.employeeForm.patchValue({ "Id": uuid() });
     }
@@ -65,7 +67,9 @@ export class CreateEmployeeComponent implements OnInit {
       this.showMessage('candidateDetails Add successfully!');
     }
     localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
+    this.close();
   }
+}
 
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {

@@ -34,11 +34,11 @@
       </ng-container>
       <ng-container matColumnDef="EmployeeActivateDate">
         <th mat-header-cell *matHeaderCellDef> Active-date </th>
-        <td mat-cell *matCellDef="let element"> {{element.EmployeeActivateDate}} </td>
-      </ng-container>
+        <td mat-cell *matCellDef="let element"> {{element.EmployeeActivateDate| date}} </td>
+            </ng-container>
       <ng-container matColumnDef="EmployeeDOB">
         <th mat-header-cell *matHeaderCellDef> Dob </th>
-        <td mat-cell *matCellDef="let element"> {{element.EmployeeDOB}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.EmployeeDOB| date}} </td>
       </ng-container>
       <ng-container matColumnDef="TaskId">
         <th mat-header-cell *matHeaderCellDef> Task-Id </th>
@@ -46,11 +46,11 @@
       </ng-container>
       <ng-container matColumnDef="TaskStartDate">
         <th mat-header-cell *matHeaderCellDef> T-Start-Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.TaskStartDate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TaskStartDate| date}} </td>
       </ng-container>
       <ng-container matColumnDef="TaskEndDate">
         <th mat-header-cell *matHeaderCellDef> T-End-Date</th>
-        <td mat-cell *matCellDef="let element"> {{element.TaskEndDate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TaskEndDate| date}} </td>
       </ng-container>
 
       <ng-container matColumnDef="icon">

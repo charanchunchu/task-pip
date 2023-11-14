@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PeriodicElement } from './customer-interface';
 import { ViewEmployeeComponent } from '../customer/view-employee/view-employee.component';
@@ -32,8 +32,9 @@ export class DashboardComponent {
 
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-      height: '55%',
+      height: '60%',
       width: '50%',
+    disableClose : true
     });
 
     dialogRef.afterClosed().subscribe(() => {
@@ -74,9 +75,11 @@ export class DashboardComponent {
       const data = JSON.parse(localStorage.getItem('candidateDetails'));
       const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
       let dialogRef = this.dialog.open(CreateEmployeeComponent, {
-        height: '55%',
+        height: '60%',
         width: '50%',
+        disableClose : true,
         data: data[index]
+
       });
 
       dialogRef.afterClosed().subscribe(() => {
@@ -91,7 +94,6 @@ export class DashboardComponent {
   }
 
   deleteEmployee(row: PeriodicElement) {
-    alert("Do u want delete");
     if (this.userRole == "admin") {
       this.clickedRowData = row;
       const data = JSON.parse(localStorage.getItem('candidateDetails'));
