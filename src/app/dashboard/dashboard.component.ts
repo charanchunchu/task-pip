@@ -19,13 +19,18 @@ export class DashboardComponent {
   constructor(private http: HttpClient, public dialog: MatDialog, private snackBar: MatSnackBar) {
   }
   ngOnInit() {
-    this.candidate_details();
     this.userRole = sessionStorage.getItem('userRole');
-    console.log(this.userRole);
+  console.log(this.userRole);
+  this.candidate_details();
   }
 
   candidate_details() {
-    this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+    const candidateDetails = localStorage.getItem('candidateDetails');
+    if (candidateDetails) {
+      this.details = JSON.parse(candidateDetails);
+    } else {
+      this.details = [];
+    }
   }
   displayedColumns: string[] = ['S.NO', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
 

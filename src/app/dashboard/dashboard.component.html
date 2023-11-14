@@ -11,8 +11,8 @@
     </div>
   </div>
   <div class="container mt-5">
-    <ng-container *ngIf="details.length > 0; else emptyTable">
-    <table mat-table [dataSource]="details" class="mat-elevation-z8">
+    <ng-container *ngIf="details && details.length > 0; else emptyTable">
+          <table mat-table [dataSource]="details" class="mat-elevation-z8">
       <ng-container matColumnDef="S.NO">
         <th mat-header-cell *matHeaderCellDef> S.NO </th>
         <td mat-cell *matCellDef="let element; let i = index;"> {{i}} </td>
