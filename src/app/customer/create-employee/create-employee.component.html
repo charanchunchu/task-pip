@@ -6,7 +6,7 @@
     <p class="Add-emplyee-deatils">{{isEditForm == false ? 'Add Employee Details' : 'Edit Employee Details'}}</p>
     <div class="row">
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Name </mat-label>
           <input type="text" matInput placeholder="Enter your Name" formControlName="Name">
           <mat-error *ngIf="employeeForm?.get('Name')?.hasError('required')">
@@ -15,7 +15,7 @@
         </mat-form-field>
       </div>
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Email </mat-label>
           <input type="email" matInput placeholder="Enter your email" formControlName="Email">
 
@@ -30,8 +30,8 @@
     </div>
     <div class="row">
       <div class="col">
-        <mat-form-field appearance="outline">
-          <mat-label>Number </mat-label>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Mobile Number </mat-label>
           <input type="number" matInput placeholder="Enter your number" formControlName="Mobile">
           <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('required')">
             Mobile Number is required
@@ -42,7 +42,7 @@
         </mat-form-field>
       </div>
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Employee Activate Date </mat-label>
           <input matInput [matDatepicker]="picker" formControlName="EmployeeActivateDate">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -55,7 +55,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Employee DOB</mat-label>
           <input matInput [matDatepicker]="picker1" formControlName="EmployeeDOB">
           <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -66,7 +66,7 @@
         </mat-form-field>
       </div>
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label>Task ID </mat-label>
           <input type="number" matInput placeholder="Enter your number" formControlName="TaskId">
           <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
@@ -77,7 +77,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label> Task Start Date</mat-label>
           <input matInput [matDatepicker]="picker2" formControlName="TaskStartDate">
           <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -88,7 +88,7 @@
         </mat-form-field>
       </div>
       <div class="col">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="form-field">
           <mat-label> Task End Date</mat-label>
           <input matInput [matDatepicker]="picker3" formControlName="TaskEndDate">
           <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
@@ -102,3 +102,4 @@
     <button class="submit-btn mt-4 button" type="submit"
      >{{isEditForm == false ? 'Create' : 'Update'}}</button>
   </form>
+</div>
