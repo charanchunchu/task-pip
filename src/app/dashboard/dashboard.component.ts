@@ -46,7 +46,7 @@ export class DashboardComponent {
       this.details = JSON.parse(localStorage.getItem('candidateDetails'));
     });
   }
-   applyFilter(event: Event) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     if (!filterValue || filterValue === '') {
       this.details = JSON.parse(localStorage.getItem('candidateDetails'));
@@ -55,11 +55,12 @@ export class DashboardComponent {
         return (
           item.Name.toLowerCase().includes(filterValue) ||
           item.Email.toLowerCase().includes(filterValue) ||
-          item.Mobile.includes(filterValue)
+          item.Mobile.toString().includes(filterValue)
         );
       });
     }
   }
+
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {
