@@ -14,12 +14,12 @@ export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   employees: any[] = [];
   isEditForm: boolean = false;
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar,public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
     this.employeeForm = this.fb.group({
-      Id: ['', Validators.required],
+      Id: [''],
       Name: ['', Validators.required],
       Email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]],
-      Mobile: ['', [Validators.required,  Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
+      Mobile: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       EmployeeActivateDate: ['', Validators.required],
       EmployeeDOB: ['', Validators.required],
       TaskId: ['', Validators.required],
@@ -48,28 +48,26 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.employeeForm.valid);
-    if(this.employeeForm.valid){
-    if (!this.employeeForm.value["Id"]) {
-      this.employeeForm.patchValue({ "Id": uuid() });
+    if (this.employeeForm.valid) {
+      if (!this.employeeForm.value["Id"]) {
+        this.employeeForm.patchValue({ "Id": uuid() });
+      }
+      const updatedEmployee = this.employeeForm.value;
+      if (!this.employees) {
+        this.employees = [];
+      }
+      const index = this.employees.findIndex(item => item && item["Id"] === updatedEmployee["Id"]);
+      if (index !== -1) {
+        this.employees[index] = updatedEmployee;
+        this.showMessage('candidateDetails update successfully!');
+      } else {
+        this.employees.push(updatedEmployee);
+        this.showMessage('candidateDetails Add successfully!');
+      }
+      localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
+      this.close();
     }
-    const updatedEmployee = this.employeeForm.value;
-
-    if (!this.employees) {
-      this.employees = [];
-    }
-
-    const index = this.employees.findIndex(item => item && item["Id"] === updatedEmployee["Id"]);
-    if (index !== -1) {
-      this.employees[index] = updatedEmployee;
-      this.showMessage('candidateDetails update successfully!');
-    } else {
-      this.employees.push(updatedEmployee);
-      this.showMessage('candidateDetails Add successfully!');
-    }
-    localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
-    this.close();
   }
-}
 
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
