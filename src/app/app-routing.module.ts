@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientAuthGuard } from './authGuard/ClientAuthGuard';
 import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: MainComponent },
   { path: 'dashboard', component: DashboardComponent },
   {
     path: 'Customer',

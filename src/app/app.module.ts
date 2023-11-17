@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientAuthGuard } from './authGuard/ClientAuthGuard';
 import { AuthenticateService } from './authGuard/authenticate.service';
 import { CommonModule } from '@angular/common';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     AppComponent,
     DashboardComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
