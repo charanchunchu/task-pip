@@ -27,7 +27,7 @@ export class NavbarComponent {
   }
   signIn() {
     let dialogRef = this.dialog.open(LoginComponent, {
-      disableClose: true
+      // disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,4 +22,21 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+
+
+<header>
+  <nav class="navbar">
+    <a class="logo" href="#">Coffee<span>.</span></a>
+    <ul class="menu-links">
+      <span id="close-menu-btn" class="material-symbols-outlined">close</span>
+      <!-- <li><a href="#">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">Testimonials</a></li>
+      <li><a href="#">About us</a></li> -->
+      <li *ngIf="userStatus!='signin'"><a class="Sign ms-auto" (click)="signIn()">Sign In</a></li>
+      <li *ngIf="userStatus=='signin'"><a class="Sign ms-auto" (click)="signOut()">Sign Out</a></li>
+    </ul>
+  </nav>
+</header>
