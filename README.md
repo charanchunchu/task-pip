@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+//dp.json
+ To run dp.json  json-server --watch db.json
+ To generate dp.json npm install -g json-server
+ To install dp.json npm i json-server

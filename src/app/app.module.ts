@@ -14,6 +14,8 @@ import { ClientAuthGuard } from './authGuard/ClientAuthGuard';
 import { AuthenticateService } from './authGuard/authenticate.service';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MainComponent } from './main/main.component';
     DashboardComponent,
     NavbarComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    MenuItemComponent,
+    AddMenuComponent
   ],
   imports: [
     BrowserModule,
