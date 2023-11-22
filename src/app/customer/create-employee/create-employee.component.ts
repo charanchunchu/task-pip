@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { v4 as uuid } from 'uuid';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PeriodicElement } from 'src/app/dashboard/customer-interface';
+import { ServiceService } from 'src/app/service/service.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -14,9 +15,9 @@ export class CreateEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   employees: any[] = [];
   isEditForm: boolean = false;
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement, private service: ServiceService) {
     this.employeeForm = this.fb.group({
-      Id: [''],
+      id: [''],
       Name: ['', Validators.required],
       Email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]],
       Mobile: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
@@ -29,7 +30,7 @@ export class CreateEmployeeComponent implements OnInit {
     if (data != null) {
       this.isEditForm = true;
       this.employeeForm.patchValue({
-        Id: data["Id"], Name: data["Name"],
+        id: data["id"], Name: data["Name"],
         Email: data["Email"],
         Mobile: data["Mobile"],
         EmployeeActivateDate: data["EmployeeActivateDate"],
@@ -42,33 +43,51 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.data) {
+      this.isEditForm = true;
+      this.employeeForm.patchValue({
+        Id: this.data["id"],
+        Name: this.data["Name"],
+        Email: this.data["Email"],
+        Mobile: this.data["Mobile"],
+        EmployeeActivateDate: this.data["EmployeeActivateDate"],
+        EmployeeDOB: this.data["EmployeeDOB"],
+        TaskId: this.data["TaskId"],
+        TaskStartDate: this.data["TaskStartDate"],
+        TaskEndDate: this.data["TaskEndDate"],
+      });
+    }
+    console.log('Received data:', this.data);
     const storedEmployees = JSON.parse(localStorage.getItem('candidateDetails'));
     this.employees = storedEmployees || [];
   }
-
   onSubmit() {
-    console.log(this.employeeForm.valid);
     if (this.employeeForm.valid) {
-      if (!this.employeeForm.value["Id"]) {
-        this.employeeForm.patchValue({ "Id": uuid() });
-      }
+      console.log(this.employeeForm.value);
       const updatedEmployee = this.employeeForm.value;
-      if (!this.employees) {
-        this.employees = [];
-      }
-      const index = this.employees.findIndex(item => item && item["Id"] === updatedEmployee["Id"]);
-      if (index !== -1) {
-        this.employees[index] = updatedEmployee;
-        this.showMessage('candidateDetails update successfully!');
+      if (this.isEditForm) {
+        this.service.updateMenuItem(updatedEmployee.id, updatedEmployee).subscribe(
+          (response) => {
+            this.showMessage('Employee details updated successfully!');
+            this.close();
+          },
+          (error) => {
+            this.showMessage('Error updating employee details.');
+          }
+        );
       } else {
-        this.employees.push(updatedEmployee);
-        this.showMessage('candidateDetails Add successfully!');
+        this.service.addMenuItem(updatedEmployee).subscribe(
+          (response) => {
+            this.showMessage('Employee added successfully!');
+            this.close();
+          },
+          (error) => {
+            this.showMessage('Error adding employee.');
+          }
+        );
       }
-      localStorage.setItem('candidateDetails', JSON.stringify(this.employees));
-      this.close();
     }
   }
-
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000,

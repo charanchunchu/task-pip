@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { PeriodicElement } from './customer-interface';
 import { ViewEmployeeComponent } from '../customer/view-employee/view-employee.component';
 import { CreateEmployeeComponent } from '../customer/create-employee/create-employee.component';
+import { ServiceService } from '../service/service.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -16,14 +18,22 @@ export class DashboardComponent {
   employees: any[] = [];
   public userRole;
   filteredDetails: any[] = [];
-  constructor(private http: HttpClient, public dialog: MatDialog, private snackBar: MatSnackBar) {
-  }
+  constructor(private http: HttpClient, public dialog: MatDialog, private snackBar: MatSnackBar, private service: ServiceService) { }
   ngOnInit() {
     this.userRole = sessionStorage.getItem('userRole');
-  console.log(this.userRole);
-  this.candidate_details();
+    console.log(this.userRole);
+    this.getMenuItems();
   }
-
+  getMenuItems() {
+    this.service.getMenuItems().subscribe(
+      (data: any[]) => {
+        this.details = data;
+      },
+      (error) => {
+        console.error('Error getting menu items:', error);
+      }
+    );
+  }
   candidate_details() {
     const candidateDetails = localStorage.getItem('candidateDetails');
     if (candidateDetails) {
@@ -33,17 +43,15 @@ export class DashboardComponent {
     }
   }
   displayedColumns: string[] = ['S.NO', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
-
-
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
       height: '60%',
       width: '50%',
-    disableClose : true
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+      this.getMenuItems();
     });
   }
   applyFilter(event: Event) {
@@ -60,7 +68,6 @@ export class DashboardComponent {
       });
     }
   }
-
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {
@@ -74,48 +81,39 @@ export class DashboardComponent {
     const userRole = sessionStorage.getItem('userRole');
     return userRole;
   }
-
   editEmployee(row: PeriodicElement) {
-    if (this.userRole == "admin") {
-      this.clickedRowData = row;
-      const data = JSON.parse(localStorage.getItem('candidateDetails'));
-      const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
+    if (this.userRole === "admin") {
       let dialogRef = this.dialog.open(CreateEmployeeComponent, {
         height: '60%',
         width: '50%',
-        disableClose : true,
-        data: data[index]
-
+        disableClose: true,
+        data: row
       });
-
       dialogRef.afterClosed().subscribe(() => {
-        this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+        this.getMenuItems();
       });
-    }
-    else {
-      this.snackBar.open("You don't have admin permissions", 'Close', {
-        duration: 3000,
-      });
-    }
-  }
-
-  deleteEmployee(row: PeriodicElement) {
-    if (this.userRole == "admin") {
-      this.clickedRowData = row;
-      const data = JSON.parse(localStorage.getItem('candidateDetails'));
-      const index = data.findIndex(item => item["Id"] === this.clickedRowData["Id"]);
-      if (index !== -1) {
-        data.splice(index, 1);
-        localStorage.setItem('candidateDetails', JSON.stringify(data));
-        this.details = JSON.parse(localStorage.getItem('candidateDetails'));
-      }
     } else {
       this.snackBar.open("You don't have admin permissions", 'Close', {
         duration: 3000,
       });
     }
   }
-
+  deleteEmployee(row: any) {
+    if (this.userRole === 'admin') {
+      this.service.deleteMenuItem(row['id']).subscribe(
+        () => {
+          this.getMenuItems();
+        },
+        (error) => {
+          console.error('Error deleting employee:', error);
+        }
+      );
+    } else {
+      this.snackBar.open("You don't have admin permissions", 'Close', {
+        duration: 3000,
+      });
+    }
+  }
 }
 
 

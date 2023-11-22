@@ -17,5 +17,16 @@
     "name": "typicode"
   },
   "menu": [
+    {
+      "id": 1,
+      "Name": "charan chunchu",
+      "Email": "ch.charan98@gmail.com",
+      "Mobile": 9494969433,
+      "EmployeeActivateDate": "2023-11-20T18:30:00.000Z",
+      "EmployeeDOB": "2023-11-14T18:30:00.000Z",
+      "TaskId": 243,
+      "TaskStartDate": "2023-11-21T18:30:00.000Z",
+      "TaskEndDate": "2023-11-21T18:30:00.000Z"
+    }
   ]
 }
