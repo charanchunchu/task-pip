@@ -16,13 +16,17 @@ export class ServiceService {
   }
 
   addMenuItem(data: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log('Data to be sent:', data);
+
+    const headers = new HttpHeaders();
     return this._http.post<any>(this.apiUrl, data, { headers }).pipe(
       catchError((error) => {
+        console.error('Error adding menu item:', error);
         return throwError(error);
       })
     );
   }
+
 
   updateMenuItem(id: number, data: any): Observable<any> {
     return this._http.put<any>(`${this.apiUrl}/${id}`, data);

@@ -5,6 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PeriodicElement } from 'src/app/dashboard/customer-interface';
 import { ServiceService } from 'src/app/service/service.service';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-create-employee',
@@ -12,11 +13,14 @@ import { ServiceService } from 'src/app/service/service.service';
   styleUrls: ['./create-employee.component.scss']
 })
 export class CreateEmployeeComponent implements OnInit {
+   imageUrl: string | ArrayBuffer | null = null;
   employeeForm: FormGroup;
   employees: any[] = [];
   isEditForm: boolean = false;
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement, private service: ServiceService) {
     this.employeeForm = this.fb.group({
+      profileImage: [''],
+      fileInputControl: [''],
       id: [''],
       Name: ['', Validators.required],
       Email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]],
@@ -88,6 +92,8 @@ export class CreateEmployeeComponent implements OnInit {
       }
     }
   }
+
+
   showMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
@@ -96,4 +102,24 @@ export class CreateEmployeeComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.imageUrl = e.target?.result;
+      };
+      reader.readAsDataURL(file);
+      this.employeeForm.patchValue({
+        profileImage: file,
+      });
+    }
+  }
+
+
+resetFileInput() {
+  this.imageUrl = null;
+  this.employeeForm.get('fileInputControl')?.setValue('');
+}
 }

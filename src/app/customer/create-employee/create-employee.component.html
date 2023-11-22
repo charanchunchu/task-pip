@@ -99,7 +99,13 @@
         </mat-form-field>
       </div>
     </div>
-    <button class="submit-btn mt-4 button" type="submit"
-     >{{isEditForm == false ? 'Create' : 'Update'}}</button>
+    <div class="row">
+      <div class="col">
+        <label>Profile Image</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="fileInputControl">
+        <img *ngIf="employeeForm.get('profileImage').value" [src]="imageUrl" alt="Preview" class="image-preview">
+      </div>
+    </div>
+    <button class="submit-btn mt-4 button" type="submit">{{isEditForm == false ? 'Create' : 'Update'}}</button>
   </form>
 </div>

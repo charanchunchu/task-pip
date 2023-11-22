@@ -16,6 +16,8 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { SafeUrlPipe } from './dashboard/safe-url.pipe';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
     LoginComponent,
     MainComponent,
     MenuItemComponent,
-    AddMenuComponent
+    AddMenuComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,

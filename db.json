@@ -18,26 +18,30 @@
   },
   "menu": [
     {
+      "profileImage": {},
+      "fileInputControl": "C:\\fakepath\\americano-with-milk.webp",
       "id": 1,
       "Name": "charan chunchu",
       "Email": "ch.charan98@gmail.com",
-      "Mobile": 9494969433,
-      "EmployeeActivateDate": "2023-11-20T18:30:00.000Z",
-      "EmployeeDOB": "2023-11-13T18:30:00.000Z",
-      "TaskId": 243,
-      "TaskStartDate": "2023-11-21T18:30:00.000Z",
-      "TaskEndDate": "2023-11-21T18:30:00.000Z"
+      "Mobile": 8185874372,
+      "EmployeeActivateDate": "2023-11-21T18:30:00.000Z",
+      "EmployeeDOB": "2023-11-09T18:30:00.000Z",
+      "TaskId": 65,
+      "TaskStartDate": "2023-11-16T18:30:00.000Z",
+      "TaskEndDate": "2023-11-14T18:30:00.000Z"
     },
     {
+      "profileImage": {},
+      "fileInputControl": "C:\\fakepath\\background.jpg",
       "id": 2,
       "Name": "charan chunchu",
       "Email": "ch.charan98@gmail.com",
-      "Mobile": 4949494949,
-      "EmployeeActivateDate": "2023-11-06T18:30:00.000Z",
-      "EmployeeDOB": "2023-11-15T18:30:00.000Z",
-      "TaskId": 12,
-      "TaskStartDate": "2023-11-21T18:30:00.000Z",
-      "TaskEndDate": "2023-11-22T18:30:00.000Z"
+      "Mobile": 7845124578,
+      "EmployeeActivateDate": "2023-11-14T18:30:00.000Z",
+      "EmployeeDOB": "2023-11-08T18:30:00.000Z",
+      "TaskId": 4644,
+      "TaskStartDate": "2023-11-22T18:30:00.000Z",
+      "TaskEndDate": "2023-11-21T18:30:00.000Z"
     }
   ]
 }

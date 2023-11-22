@@ -27,7 +27,12 @@ export class DashboardComponent {
   getMenuItems() {
     this.service.getMenuItems().subscribe(
       (data: any[]) => {
-        this.details = data;
+        this.details = data.map(item => {
+          return {
+            ...item,
+            fileInputControl: this.sanitizeImagePath(item.fileInputControl),
+          };
+        });
       },
       (error) => {
         console.error('Error getting menu items:', error);
@@ -42,7 +47,7 @@ export class DashboardComponent {
       this.details = [];
     }
   }
-  displayedColumns: string[] = ['S.NO', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
+  displayedColumns: string[] = ['S.NO', 'Image', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
       height: '60%',
@@ -70,9 +75,6 @@ export class DashboardComponent {
       });
     }
   }
-
-
-
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {
@@ -119,6 +121,21 @@ export class DashboardComponent {
       });
     }
   }
+  sanitizeImagePath(path: string): string {
+    if (!path) {
+      return path;
+    }
+    if (path.startsWith('C:\\fakepath\\')) {
+      const fileExtension = path.split('.').pop().toLowerCase();
+      if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExtension)) {
+        const imageUrl = `assets/images/${path.replace('C:\\fakepath\\', '')}`;
+        console.log('Generated Image URL:', imageUrl);
+        return imageUrl;
+      }
+    } else if (path.startsWith('http')) {
+      return path;
+    }
+    console.warn('Unrecognized file path format:', path);
+    return path;
+  }
 }
-
-
