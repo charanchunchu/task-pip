@@ -21,4 +21,11 @@ export class MenuItemComponent implements OnInit {
       this.menuData = data;
     });
   }
+  changeColor(type:any){
+    if(type==="veg"){
+      return true
+    }else{
+      return false
+    }
+  }
 }

@@ -56,18 +56,23 @@ export class DashboardComponent {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+
     if (!filterValue || filterValue === '') {
-      this.details = JSON.parse(localStorage.getItem('candidateDetails'));
+      this.getMenuItems();
     } else {
       this.details = this.details.filter((item) => {
-        return (
-          item.Name.toLowerCase().includes(filterValue) ||
-          item.Email.toLowerCase().includes(filterValue) ||
-          item.Mobile.toString().includes(filterValue)
-        );
+        const concatenatedValues = Object.values(item)
+          .filter(value => typeof value === 'string' || typeof value === 'number')
+          .map(value => value.toString().toLowerCase())
+          .join(' ');
+
+        return concatenatedValues.includes(filterValue);
       });
     }
   }
+
+
+
   viewEmployee(row: PeriodicElement) {
     this.clickedRowData = row;
     const dialogRef = this.dialog.open(ViewEmployeeComponent, {

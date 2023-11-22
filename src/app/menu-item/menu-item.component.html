@@ -19,7 +19,7 @@
                                   <span class="fa fa-fire"></span> {{ menu.description }} {{ menu.calories }}
                               </div>
                               <div class="pull-right">
-                                  <span class="badge badge-success">{{ menu.type }}</span>
+                                  <span class="badge badge-success"  [ngStyle]="{'color': changeColor(menu.type) ? 'red' : 'blue'}">{{ menu.type }}</span>
                               </div>
                           </div>
                           <hr>
