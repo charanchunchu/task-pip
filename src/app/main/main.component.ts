@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router,public dialog: MatDialog) { }
 order(){
-  this.router.navigate(['menu']);}
+  let dialogRef = this.dialog.open(LoginComponent, {
+    // disableClose: true
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('Dialog closed with result:', result);
+  });}
 }

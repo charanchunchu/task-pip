@@ -47,7 +47,7 @@ export class DashboardComponent {
       this.details = [];
     }
   }
-  displayedColumns: string[] = ['S.NO', 'Image', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
+  // displayedColumns: string[] = ['S.NO', 'Image', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
       height: '60%',
@@ -137,5 +137,12 @@ export class DashboardComponent {
     }
     console.warn('Unrecognized file path format:', path);
     return path;
+  }
+  changeColor(type:any){
+    if(type==="veg"){
+      return true
+    }else{
+      return false
+    }
   }
 }

@@ -8,4 +8,5 @@ export interface PeriodicElement {
   TaskId: number;
   TaskStartDate: Date;
   TaskEndDate: Date;
+  fileInputControl: string;
 }

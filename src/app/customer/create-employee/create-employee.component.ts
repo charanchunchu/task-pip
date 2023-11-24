@@ -22,26 +22,23 @@ export class CreateEmployeeComponent implements OnInit {
       profileImage: [''],
       fileInputControl: [''],
       id: [''],
-      Name: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),]],
-      Mobile: ['', [Validators.required, Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
-      EmployeeActivateDate: ['', Validators.required],
-      EmployeeDOB: ['', Validators.required],
-      TaskId: ['', Validators.required],
-      TaskStartDate: ['', Validators.required],
-      TaskEndDate: ['', Validators.required],
+      Title: ['', Validators.required],
+      Item: ['', Validators.required],
+      Price: ['', Validators.required],
+      Description: ['', Validators.required],
+      Calories: ['', Validators.required],
+      Type: ['', Validators.required],
     });
     if (data != null) {
       this.isEditForm = true;
       this.employeeForm.patchValue({
-        id: data["id"], Name: data["Name"],
-        Email: data["Email"],
-        Mobile: data["Mobile"],
-        EmployeeActivateDate: data["EmployeeActivateDate"],
-        EmployeeDOB: data["EmployeeDOB"],
-        TaskId: data["TaskId"],
-        TaskStartDate: data["TaskStartDate"],
-        TaskEndDate: data["TaskEndDate"],
+        id: data["id"], Title: data["Title"],
+        Item: data["Item"],
+        Price: data["Price"],
+        Description: data["Description"],
+        Calories: data["Calories"],
+        Type: data["Type"],
+        fileInputControl: data["fileInputControl"],
       })
     }
   }
@@ -49,16 +46,16 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.isEditForm = true;
+      this.imageUrl = this.data.fileInputControl;
       this.employeeForm.patchValue({
         Id: this.data["id"],
-        Name: this.data["Name"],
-        Email: this.data["Email"],
-        Mobile: this.data["Mobile"],
-        EmployeeActivateDate: this.data["EmployeeActivateDate"],
-        EmployeeDOB: this.data["EmployeeDOB"],
-        TaskId: this.data["TaskId"],
-        TaskStartDate: this.data["TaskStartDate"],
-        TaskEndDate: this.data["TaskEndDate"],
+        Title: this.data["Title"],
+        Item: this.data["Item"],
+        Price: this.data["Price"],
+        Description: this.data["Description"],
+        Calories: this.data["Calories"],
+        Type: this.data["Type"],
+        fileInputControl: this.data.fileInputControl,
       });
     }
     console.log('Received data:', this.data);
@@ -111,8 +108,10 @@ export class CreateEmployeeComponent implements OnInit {
         this.imageUrl = e.target?.result;
       };
       reader.readAsDataURL(file);
+
       this.employeeForm.patchValue({
         profileImage: file,
+        fileInputControl: file.name,
       });
     }
   }

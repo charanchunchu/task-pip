@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 <div class="container-fluid hero-section">
 <div class="container mt-5">
   <div class="row mt-5 mx-auto" *ngIf="userRole=='admin'">
@@ -85,4 +85,82 @@
     </table>
   </div>
 </div>
+</div> -->
+<app-navbar></app-navbar>
+<div class="main-content hero-section">
+  <div class="container mt-5">
+    <div class="row mt-5 mx-auto" *ngIf="userRole=='admin'">
+      <div class="col">
+        <div class="button">
+          <button mat-button (click)="openDialog()" class="add-btn">ADD</button>
+        </div>
+      </div>
+      <div class="col text-end">
+        <input class="input-fliter" matInput (input)="applyFilter($event)" placeholder="Filter the data">
+      </div>
+    </div>
+    <div class="container">
+      <h1 class="text-center text-uppercase">Menu</h1>
+      <div class="row main-menu">
+        <div class="col-sm-6 col-md-6 col-lg-6" *ngFor="let element of details">
+          <div class="food-card food-card--vertical">
+            <div class="food-card_img">
+              <img class="image" [src]="element.fileInputControl | safeUrl" alt="Img">
+              <a><i class="far fa-heart"></i></a>
+            </div>
+            <div class="food-card_content">
+              <div class="food-card_title-section">
+                <a class="food-card_title">{{ element.Title }}</a>
+                <a class="food-card_author">{{ element.Item }}</a>
+              </div>
+              <div class="food-card_bottom-section">
+                <div class="space-between">
+                  <div>
+                    <span class="fa fa-fire"></span> {{ element.Description }} {{ element.Calories }}
+                  </div>
+                  <div class="pull-right">
+                    <span class="badge badge-success"
+                      [ngStyle]="{'color': changeColor(element.type) ? 'red' : 'green'}">{{ element.Type }}</span>
+                  </div>
+                </div>
+                <hr>
+                <div class="space-between">
+                  <div class="food-card_price">
+                    <span>{{ element.Price }}</span>
+                  </div>
+                  <div class="food-card_order-count" *ngIf="userRole=='customer'">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary minus-btn" type="button" id="button-addon1"><i
+                            class="fa fa-minus"></i></button>
+                      </div>
+                      <input type="text" class="form-control input-manulator" placeholder=""
+                        aria-label="Example text with button addon" aria-describedby="button-addon1" value="0">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary add-btn" type="button" id="button-addon1"><i
+                            class="fa fa-plus"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="orders-op" *ngIf="userRole=='admin'">
+                    <div class="row d-flex">
+                      <div class="col"><button mat-button (click)="viewEmployee(element)">
+                          <mat-icon>remove_red_eye</mat-icon> View
+                        </button></div>
+                      <div class="col"> <button mat-button (click)="editEmployee(element)">
+                          <mat-icon>edit</mat-icon> Edit
+                        </button></div>
+                      <div class="col"> <button mat-button (click)="deleteEmployee(element)">
+                          <mat-icon>delete</mat-icon> Delete
+                        </button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

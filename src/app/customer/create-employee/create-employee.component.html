@@ -7,48 +7,23 @@
     <div class="row">
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Name </mat-label>
-          <input type="text" matInput placeholder="Enter your Name" formControlName="Name">
-          <mat-error *ngIf="employeeForm?.get('Name')?.hasError('required')">
-            Name is required
+          <mat-label>Title </mat-label>
+          <input type="text" matInput placeholder="Enter your Title" formControlName="Title">
+          <mat-error *ngIf="employeeForm?.get('Title')?.hasError('required')">
+            Title is required
           </mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Email </mat-label>
-          <input type="email" matInput placeholder="Enter your email" formControlName="Email">
+          <mat-label>Item </mat-label>
+          <input type="Item" matInput placeholder="Enter your Item" formControlName="Item">
 
-          <mat-error *ngIf="employeeForm?.get('Email')?.hasError('required')">
-            Email is required
+          <mat-error *ngIf="employeeForm?.get('Item')?.hasError('required')">
+            Item is required
           </mat-error>
-          <mat-error *ngIf="employeeForm?.get('Email')?.hasError('pattern')">
-            Enter a valid email address
-          </mat-error>
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Mobile Number </mat-label>
-          <input type="number" matInput placeholder="Enter your number" formControlName="Mobile">
-          <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('required')">
-            Mobile Number is required
-          </mat-error>
-          <mat-error *ngIf="employeeForm?.get('Mobile')?.hasError('pattern')">
-            Enter a valid mobile number
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="col">
-        <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Employee Activate Date </mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="EmployeeActivateDate">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="employeeForm?.get('EmployeeActivateDate')?.hasError('required')">
-            Employee Activate Date is required
+          <mat-error *ngIf="employeeForm?.get('Item')?.hasError('pattern')">
+            Enter a valid Item
           </mat-error>
         </mat-form-field>
       </div>
@@ -56,21 +31,22 @@
     <div class="row">
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Employee DOB</mat-label>
-          <input matInput [matDatepicker]="picker1" formControlName="EmployeeDOB">
-          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-          <mat-error *ngIf="employeeForm?.get('EmployeeDOB')?.hasError('required')">
-            Employee Dob is required
+          <mat-label>Price </mat-label>
+          <input type="Price" matInput placeholder="Enter your Price" formControlName="Price">
+          <mat-error *ngIf="employeeForm?.get('Price')?.hasError('required')">
+            Price is required
+          </mat-error>
+          <mat-error *ngIf="employeeForm?.get('Price')?.hasError('pattern')">
+            Enter a valid Price
           </mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Task ID </mat-label>
-          <input type="number" matInput placeholder="Enter your number" formControlName="TaskId">
-          <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
-            TaskId is required
+          <mat-label>Description </mat-label>
+          <input matInput formControlName="Description">
+          <mat-error *ngIf="employeeForm?.get('Description')?.hasError('required')">
+            Description is required
           </mat-error>
         </mat-form-field>
       </div>
@@ -78,23 +54,19 @@
     <div class="row">
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label> Task Start Date</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="TaskStartDate">
-          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-          <mat-error *ngIf="employeeForm?.get('TaskId')?.hasError('required')">
-            TaskId is required
+          <mat-label>Calories</mat-label>
+          <input matInput formControlName="Calories">
+          <mat-error *ngIf="employeeForm?.get('Calories')?.hasError('required')">
+            Calories is required
           </mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
-          <mat-label> Task End Date</mat-label>
-          <input matInput [matDatepicker]="picker3" formControlName="TaskEndDate">
-          <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
-          <mat-error *ngIf="employeeForm?.get('TaskEndDate')?.hasError('required')">
-            TaskEnd Date is required
+          <mat-label>Type-veg/Non-veg </mat-label>
+          <input type="text" matInput placeholder="Enter your number" formControlName="Type">
+          <mat-error *ngIf="employeeForm?.get('Type')?.hasError('required')">
+            Type required
           </mat-error>
         </mat-form-field>
       </div>
@@ -102,8 +74,9 @@
     <div class="row">
       <div class="col">
         <label>Profile Image</label>
-        <input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="fileInputControl">
-        <img *ngIf="employeeForm.get('profileImage').value" [src]="imageUrl" alt="Preview" class="image-preview">
+<input type="file" (change)="onFileSelected($event)" accept="image/*" formControlName="fileInputControl">
+<img *ngIf="imageUrl" [src]="imageUrl" alt="Preview" class="image-preview">
+
       </div>
     </div>
     <button class="submit-btn mt-4 button" type="submit">{{isEditForm == false ? 'Create' : 'Update'}}</button>

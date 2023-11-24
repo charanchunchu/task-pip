@@ -18,30 +18,15 @@
   },
   "menu": [
     {
-      "profileImage": {},
-      "fileInputControl": "C:\\fakepath\\americano-with-milk.webp",
+      "profileImage": "",
+      "fileInputControl": "assets/images/background.jpg",
       "id": 1,
-      "Name": "charan chunchu",
-      "Email": "ch.charan98@gmail.com",
-      "Mobile": 8185874372,
-      "EmployeeActivateDate": "2023-11-21T18:30:00.000Z",
-      "EmployeeDOB": "2023-11-09T18:30:00.000Z",
-      "TaskId": 65,
-      "TaskStartDate": "2023-11-16T18:30:00.000Z",
-      "TaskEndDate": "2023-11-14T18:30:00.000Z"
-    },
-    {
-      "profileImage": {},
-      "fileInputControl": "C:\\fakepath\\background.jpg",
-      "id": 2,
-      "Name": "charan chunchu",
-      "Email": "ch.charan98@gmail.com",
-      "Mobile": 7845124578,
-      "EmployeeActivateDate": "2023-11-14T18:30:00.000Z",
-      "EmployeeDOB": "2023-11-08T18:30:00.000Z",
-      "TaskId": 4644,
-      "TaskStartDate": "2023-11-22T18:30:00.000Z",
-      "TaskEndDate": "2023-11-21T18:30:00.000Z"
+      "Title": "wsasfaaedsag",
+      "Item": "ghgdsfv",
+      "Price": "gvgsvfwvsafr",
+      "Description": "gvjhsgdqjv",
+      "Calories": "sf",
+      "Type": "JHWGVFA"
     }
   ]
 }

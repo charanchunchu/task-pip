@@ -8,7 +8,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 
 const routes: Routes = [
-  { path: '', component: AddMenuComponent },
+  { path: '', component: MainComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'menu', component: MenuItemComponent },
   {
