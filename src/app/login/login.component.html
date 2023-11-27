@@ -1,24 +1,31 @@
-<header>
-  <!-- <h3 class="title">Login & Registration Form</h3> -->
-</header>
 <div class="container">
-  <div class="slider" [ngClass]="{'moveslider': isSignup, '': !isSignup}"></div>
-  <div class="btn">
-      <button class="login" (click)="switchForm(false)">Login</button>
-      <button class="signup" (click)="switchForm(true)">Signup</button>
+  <div class="slider" [ngClass]="{'moveslider': isSignup && !isForgotPassword, 'btn-forgot': isForgotPassword, '': !isSignup}"></div>
+  <div class="btn" *ngIf="!isForgotPassword">
+    <button class="login" (click)="switchForm(false)">Login</button>
+    <button class="signup" (click)="switchForm(true)">Signup</button>
+  </div>
+  <div class="btn" *ngIf="isForgotPassword">
+    <button class="login">ForgotPassword</button>
   </div>
   <div class="form-section" [ngClass]="{'form-section-move': isSignup, '': !isSignup}">
-      <div class="login-box">
-          <input type="username" class="username ele" [(ngModel)]="username" placeholder="Username">
-          <input type="password" class="password ele" [(ngModel)]="password" placeholder="password">
-          <button class="clkbtn" (click)="login()">Login</button>
+    <div class="login-box">
+      <input *ngIf="!isForgotPassword" type="username" class="username ele" [(ngModel)]="username"
+        placeholder="Username">
+      <input *ngIf="!isForgotPassword" type="password" class="password ele" [(ngModel)]="password"
+        placeholder="Password">
+      <div *ngIf="isForgotPassword">
+        <input type="email" class="email ele" [(ngModel)]="email" placeholder="Your email">
       </div>
-      <div class="signup-box">
-          <input type="text" class="name ele" placeholder="Enter your name">
-          <input type="email" class="email ele" placeholder="youremail@email.com">
-          <input type="password" class="password ele" placeholder="password">
-          <input type="password" class="password ele" placeholder="Confirm password">
-          <button class="clkbtn">Signup</button>
-      </div>
+      <button class="clkbtn" (click)="login()" *ngIf="!isForgotPassword">Login</button>
+      <button class="clkbtn" (click)="sendOTP()" *ngIf="isForgotPassword">Send OTP</button>
+      <a class="toggleForgotPassword" (click)="toggleForgotPassword()">{{ isForgotPassword ? 'Back to Login' : 'Forgot Password?' }}</a>
+    </div>
+    <div class="signup-box" *ngIf="!isForgotPassword">
+      <input type="text" class="name ele" placeholder="Enter your name">
+      <input type="email" class="email ele" placeholder="youremail@email.com">
+      <input type="password" class="password ele" placeholder="password">
+      <input type="password" class="password ele" placeholder="Confirm password">
+      <button class="clkbtn">Signup</button>
+    </div>
   </div>
 </div>

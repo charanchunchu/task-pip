@@ -10,6 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  isForgotPassword: boolean = false;
   isSignup: boolean = false;
   constructor(
     private router: Router,
@@ -20,25 +21,33 @@ export class LoginComponent {
 
   username: string = '';
   password: string = '';
+  email: string = '';
 
   ngOnInit() {}
 
   login(): void {
-    const isAuthenticated: boolean = this.authService.checkClientAuthentication(this.username, this.password);
-    if (isAuthenticated) {
-      sessionStorage.setItem('user_Status', 'signin');
-      sessionStorage.setItem('userRole', this.username);
-      this.router.navigate(['dashboard']);
-      this.snackBar.open('You have successfully logged in', 'Close', {
-        duration: 3000,
-      });
-      this.dialogRef.close();
+    if (!this.isForgotPassword) {
+      const isAuthenticated: boolean = this.authService.checkClientAuthentication(this.username, this.password);
+      if (isAuthenticated) {
+        sessionStorage.setItem('user_Status', 'signin');
+        sessionStorage.setItem('userRole', this.username);
+        this.router.navigate(['dashboard']);
+        this.snackBar.open('You have successfully logged in', 'Close', {
+          duration: 3000,
+        });
+        this.dialogRef.close();
+      } else {
+        sessionStorage.setItem('user_Status', 'error');
+        alert('Invalid credentials');
+      }
     } else {
-      sessionStorage.setItem('user_Status', 'error');
-      alert('Invalid credentials');
+      this.sendOTP();
     }
   }
-
+sendOTP(): void {}
+toggleForgotPassword(): void {
+  this.isForgotPassword = !this.isForgotPassword;
+}
   switchForm(isSignup: boolean): void {
     this.isSignup = isSignup;
   }

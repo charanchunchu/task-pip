@@ -59,6 +59,9 @@ header {
 	left: 100px;
 	transition: all 0.5s ease-in-out;
 }
+.btn-forgot{
+  width: 300px !important;
+}
 
 .moveslider {
 	left: 250px;
@@ -243,4 +246,8 @@ header {
 		width: 130px;
 		font-size: 19px;
 	}
+}
+.toggleForgotPassword{
+  color: #0d6efd;
+  cursor: pointer;
 }
