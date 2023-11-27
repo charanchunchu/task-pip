@@ -21,7 +21,6 @@ export class DashboardComponent {
   constructor(private http: HttpClient, public dialog: MatDialog, private snackBar: MatSnackBar, private service: ServiceService) { }
   ngOnInit() {
     this.userRole = sessionStorage.getItem('userRole');
-    console.log(this.userRole);
     this.getMenuItems();
   }
   getMenuItems() {
@@ -35,7 +34,6 @@ export class DashboardComponent {
         });
       },
       (error) => {
-        console.error('Error getting menu items:', error);
       }
     );
   }
@@ -112,7 +110,6 @@ export class DashboardComponent {
           this.getMenuItems();
         },
         (error) => {
-          console.error('Error deleting employee:', error);
         }
       );
     } else {
@@ -129,13 +126,11 @@ export class DashboardComponent {
       const fileExtension = path.split('.').pop().toLowerCase();
       if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExtension)) {
         const imageUrl = `assets/images/${path.replace('C:\\fakepath\\', '')}`;
-        console.log('Generated Image URL:', imageUrl);
         return imageUrl;
       }
     } else if (path.startsWith('http')) {
       return path;
     }
-    console.warn('Unrecognized file path format:', path);
     return path;
   }
   changeColor(type:any){

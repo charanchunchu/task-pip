@@ -58,13 +58,11 @@ export class CreateEmployeeComponent implements OnInit {
         fileInputControl: this.data.fileInputControl,
       });
     }
-    console.log('Received data:', this.data);
     const storedEmployees = JSON.parse(localStorage.getItem('candidateDetails'));
     this.employees = storedEmployees || [];
   }
   onSubmit() {
     if (this.employeeForm.valid) {
-      console.log(this.employeeForm.value);
       const updatedEmployee = this.employeeForm.value;
       if (this.isEditForm) {
         this.service.updateMenuItem(updatedEmployee.id, updatedEmployee).subscribe(

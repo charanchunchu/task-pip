@@ -1,4 +1,3 @@
-// add-menu.component.ts
 import { Component } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 
@@ -39,10 +38,8 @@ export class AddMenuComponent {
 
     this.service.addMenuItem(newMenuItem).subscribe(
       (response) => {
-        console.log('Menu item added successfully', response);
       },
       (error) => {
-        console.error('Error adding menu item:', error);
       }
     );
   }

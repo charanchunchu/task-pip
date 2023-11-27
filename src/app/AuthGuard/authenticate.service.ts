@@ -1,13 +1,34 @@
+// authenticate.service.ts
+
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthenticateService {
-  private credentials: { [key: string]: string } = {
-    admin: 'admin',
-    customer: 'customer'
-  };
+  private apiUrl = 'http://localhost:3000/login';
 
-  checkClientAuthentication(username: string, password: string): boolean {
-    return this.credentials[username] === password;
+  constructor(private _http: HttpClient) { }
+
+  checkClientAuthentication(username: string, password: string): Observable<boolean> {
+    return this._http.post<any>(this.apiUrl, { username, password }).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
+  }
+
+  registerUser(username: string, password: string): Observable<any> {
+    const data = { username, password, role: 'customer' };
+
+    const headers = new HttpHeaders();
+    return this._http.post<any>('http://localhost:3000/users', data, { headers }).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
   }
 }

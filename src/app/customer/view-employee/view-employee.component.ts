@@ -14,7 +14,6 @@ employeeData: any;
 constructor(private dialogRef: MatDialogRef<ViewEmployeeComponent>,
               @Inject(MAT_DIALOG_DATA) public data: PeriodicElement) {
     this.employeeData = data;
-    console.log(this.employeeData);
   }
 onClose() {
   this.dialogRef.close();

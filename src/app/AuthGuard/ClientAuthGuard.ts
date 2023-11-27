@@ -6,32 +6,13 @@ import { AuthenticateService } from './authenticate.service';
 export class ClientAuthGuard implements CanActivate {
   constructor(private router: Router, private authService: AuthenticateService) { }
 
-  canActivate(): boolean {
+  async canActivate(): Promise<boolean> {
     const username = 'admin';
     const password = 'admin';
 
-    const isClientAuthenticated: boolean = this.authService.checkClientAuthentication(username, password);
+    const isClientAuthenticated: boolean = await this.authService.checkClientAuthentication(username, password).toPromise();
 
     if (!isClientAuthenticated) {
-      this.router.navigate(['/']);
-      return false;
-    }
-
-    return true;
-  }
-}
-
-@Injectable()
-export class CustomerAuthGuard implements CanActivate {
-  constructor(private router: Router, private authService: AuthenticateService) { }
-
-  canActivate(): boolean {
-    const username = 'customer';
-    const password = 'customer';
-
-    const isCustomerAuthenticated: boolean = this.authService.checkClientAuthentication(username, password);
-
-    if (!isCustomerAuthenticated) {
       this.router.navigate(['/']);
       return false;
     }

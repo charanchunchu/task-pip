@@ -16,6 +16,5 @@ order(){
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('Dialog closed with result:', result);
   });}
 }

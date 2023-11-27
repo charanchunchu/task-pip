@@ -14,11 +14,10 @@
           <button class="clkbtn" (click)="login()">Login</button>
       </div>
       <div class="signup-box">
-          <input type="text" class="name ele" placeholder="Enter your name">
-          <input type="email" class="email ele" placeholder="youremail@email.com">
-          <input type="password" class="password ele" placeholder="password">
-          <input type="password" class="password ele" placeholder="Confirm password">
-          <button class="clkbtn">Signup</button>
-      </div>
+        <input type="text" class="name ele" [(ngModel)]="username" placeholder="Enter your username">
+        <input type="password" class="password ele" [(ngModel)]="password" placeholder="password">
+        <input type="password" class="password ele" [(ngModel)]="confirmPassword" placeholder="Confirm password">
+        <button class="clkbtn" (click)="signup()">Signup</button>
+    </div>
   </div>
 </div>
