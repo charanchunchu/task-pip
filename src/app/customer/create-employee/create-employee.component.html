@@ -17,8 +17,7 @@
       <div class="col">
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Item </mat-label>
-          <input type="Item" matInput placeholder="Enter your Item" formControlName="Item">
-
+          <input type="text" matInput placeholder="Enter your Item" formControlName="Item" />
           <mat-error *ngIf="menuForm?.get('Item')?.hasError('required')">
             Item is required
           </mat-error>

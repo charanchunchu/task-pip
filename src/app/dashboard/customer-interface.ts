@@ -1,12 +1,10 @@
 export interface PeriodicElement {
-  Id: number;
-  Name: string;
-  Email: string;
-  Mobile: string;
-  EmployeeActivateDate: Date;
-  EmployeeDOB: Date;
-  TaskId: number;
-  TaskStartDate: Date;
-  TaskEndDate: Date;
+  id: number;
+  Title: string;
+  Item: string;
+  Price: number;
+  Description: string;
+  Calories: number;
+  Type: string;
   fileInputControl: string;
 }
