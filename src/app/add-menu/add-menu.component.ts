@@ -1,4 +1,3 @@
-// add-menu.component.ts
 import { Component } from '@angular/core';
 import { ServiceService } from '../service/service.service';
 
