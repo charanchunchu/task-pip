@@ -19,14 +19,25 @@
   "menu": [
     {
       "profileImage": "",
-      "fileInputControl": "assets/images/background.jpg",
+      "fileInputControl": "assets/images/cappuccino.webp",
       "id": 1,
-      "Title": "wsasfaaedsag",
-      "Item": "ghgdsfv",
-      "Price": "gvgsvfwvsafr",
-      "Description": "gvjhsgdqjv",
-      "Calories": "sf",
-      "Type": "JHWGVFA"
+      "Title": "Cappuccino",
+      "Item": "Coffee",
+      "Price": "25",
+      "Description": "Even if one is not a Coffee fan, all must be aware of this famous beverage.",
+      "Calories": "225",
+      "Type": "veg"
+    },
+    {
+      "profileImage": "",
+      "fileInputControl": "C:\\fakepath\\americano.webp",
+      "id": 2,
+      "Title": "Americano",
+      "Item": "Coffee ",
+      "Price": "30",
+      "Description": "Americano is a strong Italian espresso drink",
+      "Calories": "300",
+      "Type": "veg"
     }
   ]
 }

@@ -92,7 +92,7 @@
     <div class="row mt-5 mx-auto" *ngIf="userRole=='admin'">
       <div class="col">
         <div class="button">
-          <button mat-button (click)="openDialog()" class="add-btn">ADD</button>
+          <button mat-button (click)="openDialog()" class="add-button">ADD</button>
         </div>
       </div>
       <div class="col text-end">
@@ -106,7 +106,7 @@
           <div class="food-card food-card--vertical">
             <div class="food-card_img">
               <img class="image" [src]="element.fileInputControl | safeUrl" alt="Img">
-              <a><i class="far fa-heart"></i></a>
+              <a *ngIf="userRole=='customer'"><i class="far fa-heart"></i></a>
             </div>
             <div class="food-card_content">
               <div class="food-card_title-section">
@@ -116,7 +116,7 @@
               <div class="food-card_bottom-section">
                 <div class="space-between">
                   <div>
-                    <span class="fa fa-fire"></span> {{ element.Description }} {{ element.Calories }}
+                    <span class="fa fa-fire"></span> {{ element.Calories }} {{ element.Description }}
                   </div>
                   <div class="pull-right">
                     <span class="badge badge-success"
@@ -126,7 +126,7 @@
                 <hr>
                 <div class="space-between">
                   <div class="food-card_price">
-                    <span>{{ element.Price }}</span>
+                    <span>{{ element.Price |currency:'INR':'symbol-narrow' }}</span>
                   </div>
                   <div class="food-card_order-count" *ngIf="userRole=='customer'">
                     <div class="input-group mb-3">

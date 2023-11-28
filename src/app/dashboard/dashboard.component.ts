@@ -47,7 +47,6 @@ export class DashboardComponent {
       this.details = [];
     }
   }
-  // displayedColumns: string[] = ['S.NO', 'Image', 'Name', 'Email', 'Mobile', 'EmployeeActivateDate', 'EmployeeDOB', 'TaskId', 'TaskStartDate', 'TaskEndDate', 'icon', 'edit', 'delete'];
   openDialog() {
     let dialogRef = this.dialog.open(CreateEmployeeComponent, {
       height: '60%',
@@ -61,7 +60,6 @@ export class DashboardComponent {
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-
     if (!filterValue || filterValue === '') {
       this.getMenuItems();
     } else {

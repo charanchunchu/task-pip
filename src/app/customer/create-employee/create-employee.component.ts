@@ -14,11 +14,11 @@ import { ViewChild, ElementRef } from '@angular/core';
 })
 export class CreateEmployeeComponent implements OnInit {
    imageUrl: string | ArrayBuffer | null = null;
-  employeeForm: FormGroup;
+  menuForm: FormGroup;
   employees: any[] = [];
   isEditForm: boolean = false;
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<CreateEmployeeComponent>, @Inject(MAT_DIALOG_DATA) public data: PeriodicElement, private service: ServiceService) {
-    this.employeeForm = this.fb.group({
+    this.menuForm = this.fb.group({
       profileImage: [''],
       fileInputControl: [''],
       id: [''],
@@ -31,7 +31,7 @@ export class CreateEmployeeComponent implements OnInit {
     });
     if (data != null) {
       this.isEditForm = true;
-      this.employeeForm.patchValue({
+      this.menuForm.patchValue({
         id: data["id"], Title: data["Title"],
         Item: data["Item"],
         Price: data["Price"],
@@ -47,7 +47,7 @@ export class CreateEmployeeComponent implements OnInit {
     if (this.data) {
       this.isEditForm = true;
       this.imageUrl = this.data.fileInputControl;
-      this.employeeForm.patchValue({
+      this.menuForm.patchValue({
         Id: this.data["id"],
         Title: this.data["Title"],
         Item: this.data["Item"],
@@ -63,9 +63,9 @@ export class CreateEmployeeComponent implements OnInit {
     this.employees = storedEmployees || [];
   }
   onSubmit() {
-    if (this.employeeForm.valid) {
-      console.log(this.employeeForm.value);
-      const updatedEmployee = this.employeeForm.value;
+    if (this.menuForm.valid) {
+      console.log(this.menuForm.value);
+      const updatedEmployee = this.menuForm.value;
       if (this.isEditForm) {
         this.service.updateMenuItem(updatedEmployee.id, updatedEmployee).subscribe(
           (response) => {
@@ -109,7 +109,7 @@ export class CreateEmployeeComponent implements OnInit {
       };
       reader.readAsDataURL(file);
 
-      this.employeeForm.patchValue({
+      this.menuForm.patchValue({
         profileImage: file,
         fileInputControl: file.name,
       });
@@ -119,6 +119,6 @@ export class CreateEmployeeComponent implements OnInit {
 
 resetFileInput() {
   this.imageUrl = null;
-  this.employeeForm.get('fileInputControl')?.setValue('');
+  this.menuForm.get('fileInputControl')?.setValue('');
 }
 }
