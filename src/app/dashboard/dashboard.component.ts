@@ -13,6 +13,7 @@ import { ServiceService } from '../service/service.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  quantities: number[] = [];
   clickedRowData: PeriodicElement;
   details: any[] = [];
   employees: any[] = [];
@@ -33,6 +34,7 @@ export class DashboardComponent {
             fileInputControl: this.sanitizeImagePath(item.fileInputControl),
           };
         });
+        this.quantities = Array(this.details.length).fill(0);
       },
       (error) => {
         console.error('Error getting menu items:', error);
@@ -141,6 +143,15 @@ export class DashboardComponent {
       return true
     }else{
       return false
+    }
+  }
+  increaseQuantity(index: number) {
+    this.quantities[index]++;
+  }
+
+  decreaseQuantity(index: number) {
+    if (this.quantities[index] > 0) {
+      this.quantities[index]--;
     }
   }
 }
