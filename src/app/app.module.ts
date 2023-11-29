@@ -17,6 +17,9 @@ import { MainComponent } from './main/main.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
 import { SafeUrlPipe } from './dashboard/safe-url.pipe';
+import { CartViewComponent } from './cart-view/cart-view.component';
+import { CartService } from './dashboard/cart.service';
+import { OrderCheckoutDialogComponent } from './order-checkout-dialog/order-checkout-dialog.component';
 
 
 
@@ -29,7 +32,9 @@ import { SafeUrlPipe } from './dashboard/safe-url.pipe';
     MainComponent,
     MenuItemComponent,
     AddMenuComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    CartViewComponent,
+    OrderCheckoutDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,7 @@ import { SafeUrlPipe } from './dashboard/safe-url.pipe';
     ReactiveFormsModule,
     CommonModule,
     ],
-    providers: [ClientAuthGuard,AuthenticateService],
+    providers: [ClientAuthGuard,AuthenticateService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

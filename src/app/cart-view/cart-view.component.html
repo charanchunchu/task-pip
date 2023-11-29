@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 cart mt-5">
+      <div class="title">
+        <div class="row">
+          <div class="col"><h4><b>Your Order Item's</b></h4></div>
+          <div class="col align-self-center text-right text-muted" *ngIf="(cartItems$ | async) as cartItems">{{ cartItems.length }} items</div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom" *ngFor="let cartItem of cartItems$ | async; let i = index">
+        <div class="row main align-items-center">
+          <div class="col-2"><img class="img-fluid" [src]="cartItem.item.fileInputControl"></div>
+          <div class="col">
+            <div class="row text-muted">{{ cartItem.item.Title }}</div>
+            <div class="row">{{ cartItem.item.Item }}</div>
+          </div>
+          <div class="col Quantity">
+            <!-- <a (click)="decreaseQuantity(cartItem)">-</a> -->
+            <a class="border">{{ cartItem.quantity }}</a>
+            <!-- <a  (click)="increaseQuantity(cartItem)">+</a> -->
+          </div>
+          <!-- <div class="col">&#8377; {{ cartItem.item.Price}}<span class="close" (click)="removeFromCart(cartItem)">&#10005;</span></div> -->
+          <div class="col">&#8377; {{ cartItem.item.Price}}<span class="close" (click)="removeFromCart(cartItem)"></span></div>
+        </div>
+      </div>
+      <div class="back-to-menu"><a >&leftarrow;</a><span class="text-muted" (click)="back()">Back To Menu</span></div>
+    </div>
+    <div class="col-md-4 summary mt-5">
+      <div><h5><b>Summary</b></h5></div>
+      <hr>
+      <div class="row">
+        <div class="col" style="padding-left: 0;">ITEMS {{ (cartItems$ | async)?.length }}</div>
+        <div class="col text-right" *ngIf="cartItems$ | async as cartItems">&#8377; {{ getTotalItemPrice(cartItems) }}</div>
+      </div>
+      <form #tableNumForm="ngForm">
+        <p class="tableNum">ENTER YOUR TABLE NUMBER</p>
+        <input id="code" placeholder="Enter your code" name="tableNum" ngModel required>
+        <div class="tableNum" *ngIf="tableNumForm.controls['tableNum'].invalid && tableNumForm.controls['tableNum'].touched">
+          Table Number is required.
+        </div>
+      </form>
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col">TOTAL PRICE</div>
+        <div class="col text-right" *ngIf="cartItems$ | async as cartItems">&#8377; {{ getTotalItemPrice(cartItems) }}</div>
+      </div>
+      <button class="btn" (click)="openCheckoutDialog(tableNumForm)">CHECKOUT</button>
+    </div>
+  </div>
+</div>

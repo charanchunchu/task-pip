@@ -1,75 +1,77 @@
 <app-navbar></app-navbar>
-<div class="main-content hero-section">
-  <div class="container mt-5">
-    <h1 class="text-center text-uppercase text-menu">Menu</h1>
-    <div class="row mt-5 mx-auto" >
-      <div class="col">
-        <div class="button" *ngIf="userRole=='admin'">
-          <button mat-button (click)="openDialog()" class="add-button">ADD</button>
+<div class="container-fluid p-0">
+  <div class="main-content hero-section">
+    <div class="container mt-5">
+      <h1 class="text-center text-uppercase text-menu">Menu</h1>
+      <div class="row mt-5 mx-auto">
+        <div class="col">
+          <div class="button" *ngIf="userRole=='admin'">
+            <button mat-button (click)="openDialog()" class="add-button">ADD</button>
+          </div>
+        </div>
+        <div class="col text-end" *ngIf="userRole=='customer'">
+          <input class="input-fliter" matInput (input)="applyFilter($event)" placeholder="Filter the data">
         </div>
       </div>
-      <div class="col text-end" *ngIf="userRole=='customer'">
-        <input class="input-fliter" matInput (input)="applyFilter($event)" placeholder="Filter the data">
-      </div>
-    </div>
-    <div class="container">
-      <div class="row main-menu">
-        <div class="col-sm-6 col-md-6 col-lg-6" *ngFor="let element of details; let i = index">
+      <div class="container">
+        <div class="row main-menu">
+          <div class="col-sm-6 col-md-6 col-lg-6" *ngFor="let element of details; let i = index">
             <div class="food-card food-card--vertical">
-            <div class="food-card_img">
-              <img class="image" [src]="element.fileInputControl | safeUrl" alt="Img">
-              <a *ngIf="userRole=='customer'"><i class="far fa-heart"></i></a>
-            </div>
-            <div class="food-card_content">
-              <div class="food-card_title-section">
-                <a class="food-card_title">{{ element.Title }}</a>
-                <a class="food-card_author">{{ element.Item }}</a>
+              <div class="food-card_img">
+                <img class="image" [src]="element.fileInputControl | safeUrl" alt="Img">
+                <a *ngIf="userRole=='customer'"><i class="far fa-heart"></i></a>
               </div>
-              <div class="food-card_bottom-section">
-                <div class="space-between">
-                  <div>
-                    <span class="fa fa-fire"></span> {{ element.Calories }} {{ element.Description }}
-                  </div>
-                  <div class="pull-right">
-                    <span class="badge badge-success"
-                      [ngStyle]="{'color': changeColor(element.type) ? 'red' : 'green'}">{{ element.Type }}</span>
-                  </div>
+              <div class="food-card_content">
+                <div class="food-card_title-section">
+                  <a class="food-card_title">{{ element.Title }}</a>
+                  <a class="food-card_author">{{ element.Item }}</a>
                 </div>
-                <hr>
-                <div class="space-between">
-                  <div class="food-card_price">
-                    <span>{{ element.Price |currency:'INR':'symbol-narrow' }}</span>
-                  </div>
-                  <div class="food-card_order-count" *ngIf="userRole=='customer'">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-secondary minus-btn" type="button" id="button-addon1"
-                                (click)="decreaseQuantity(i)">
-                          <i class="fa fa-minus"></i>
-                        </button>
-                      </div>
-                      <input type="text" class="form-control input-manulator" placeholder=""
-                            aria-label="Example text with button addon" aria-describedby="button-addon1"
-                            [(ngModel)]="quantities[i]" readonly>
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary add-btn" type="button" id="button-addon1"
-                                (click)="increaseQuantity(i)">
-                          <i class="fa fa-plus"></i>
-                        </button>
-                      </div>
+                <div class="food-card_bottom-section">
+                  <div class="space-between">
+                    <div>
+                      <span class="fa fa-fire"></span> {{ element.Calories }} {{ element.Description }}
+                    </div>
+                    <div class="pull-right">
+                      <span class="badge badge-success"
+                        [ngStyle]="{'color': changeColor(element.type) ? 'red' : 'green'}">{{ element.Type }}</span>
                     </div>
                   </div>
-                  <div class="orders-op" *ngIf="userRole=='admin'">
-                    <div class="row d-flex">
-                      <div class="col"><button mat-button (click)="viewEmployee(element)">
-                          <mat-icon>remove_red_eye</mat-icon> View
-                        </button></div>
-                      <div class="col"> <button mat-button (click)="editEmployee(element)">
-                          <mat-icon>edit</mat-icon> Edit
-                        </button></div>
-                      <div class="col"> <button mat-button (click)="deleteEmployee(element)">
-                          <mat-icon>delete</mat-icon> Delete
-                        </button></div>
+                  <hr>
+                  <div class="space-between">
+                    <div class="food-card_price">
+                      <span>{{ element.Price | currency:'INR':'symbol-narrow' }}</span>
+                    </div>
+                    <div class="food-card_order-count" *ngIf="userRole=='customer'">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-secondary minus-btn" type="button" id="button-addon1"
+                          (click)="adjustQuantity(i, -1)">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                        </div>
+                        <input type="text" class="form-control input-manulator" placeholder=""
+                               aria-label="Example text with button addon" aria-describedby="button-addon1"
+                               [(ngModel)]="quantities[i]" readonly>
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary add-btn" type="button" id="button-addon1"
+                          (click)="adjustQuantity(i, 1)">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="orders-op" *ngIf="userRole=='admin'">
+                      <div class="row d-flex">
+                        <div class="col"><button mat-button (click)="viewEmployee(element)">
+                            <mat-icon>remove_red_eye</mat-icon> View
+                          </button></div>
+                        <div class="col"> <button mat-button (click)="editEmployee(element)">
+                            <mat-icon>edit</mat-icon> Edit
+                          </button></div>
+                        <div class="col"> <button mat-button (click)="deleteEmployee(element)">
+                            <mat-icon>delete</mat-icon> Delete
+                          </button></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -81,3 +83,17 @@
     </div>
   </div>
 </div>
+
+<footer class="footer-20192 fixed-bottom" *ngIf="showCartButton()" id="footer">
+  <div class="container">
+    <div class="cta d-block d-md-flex align-items-center px-5">
+      <div>
+        <h2 class="mb-0">Your Order's in Card</h2>
+        <h3 class="text-dark">Click View Card And Order Now</h3>
+      </div>
+      <div class="ml-auto card-view-btn">
+        <a class="btn btn-dark rounded-0 py-3 px-5" (click)="toggleCartView()">Cart View</a>
+      </div>
+    </div>
+  </div>
+</footer>

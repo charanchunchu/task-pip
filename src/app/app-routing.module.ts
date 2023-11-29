@@ -6,11 +6,13 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { CartViewComponent } from './cart-view/cart-view.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'menu', component: MenuItemComponent },
+  { path: 'Cart', component: CartViewComponent },
   {
     path: 'Customer',
     canActivate: [ClientAuthGuard],

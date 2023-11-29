@@ -54,8 +54,8 @@ a {
 
 .food-card .food-card_img i {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 8px;
+  right: 16px;
   color: #fff;
   font-size: 25px;
   -webkit-transition: all 0.1s;
@@ -63,9 +63,10 @@ a {
 }
 
 .food-card .food-card_img i:hover {
-  top: 18px;
-  right: 28px;
+  top: 8px;
+  right: 16px;
   font-size: 29px;
+  color: #df7b2f;
 }
 
 .food-card .food-card_content {
@@ -190,7 +191,7 @@ a {
 }
 
 .main-menu {
-  margin-top: 8%;
+  margin-top: 4%;
 }
 
 .badge-success {
@@ -203,4 +204,92 @@ a {
   font-weight: 600;
   font-size: 2.1rem;
   text-decoration: none;
+}
+
+
+.footer-20192 {
+  position: relative;
+  color: #fff;
+  // padding: 7rem 0;
+  background-color: #141d2a;
+}
+
+.footer-20192 .container {
+  position: relative;
+}
+
+.footer-20192 h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+.footer-20192 .links li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  display: block;
+}
+
+.footer-20192 .links li a {
+  color: #666873;
+}
+
+.footer-20192 .links li a:hover {
+  color: #fff;
+}
+
+.footer-20192 .social li {
+  display: inline-block;
+  position: relative;
+}
+
+.footer-20192 .social li a {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  background-color: #df7b2f;
+  color: #fff;
+}
+
+.footer-20192 .social li a>span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.footer-20192 .cta {
+  -webkit-box-shadow: -20px -20px 0 0 rgba(52, 58, 64, 0.2);
+  box-shadow: -20px -20px 0 0 rgba(52, 58, 64, 0.2);
+  padding: 20px;
+  background-color: #df7b2f;
+  top: -50px;
+  position: relative;
+}
+
+.footer-20192 .cta h2,
+.footer-20192 .cta h3 {
+  line-height: 1.5;
+}
+
+.footer-20192 .cta h3 {
+  font-size: 20px;
+}
+.card-view-btn{
+  margin-left: auto;
+}
+#footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: 112px;
+  margin-bottom: 0px;
 }
