@@ -34,7 +34,7 @@
       </div>
       <form #tableNumForm="ngForm">
         <p class="tableNum">ENTER YOUR TABLE NUMBER</p>
-        <input id="code" placeholder="Enter your code" name="tableNum" ngModel required>
+        <input id="code" placeholder="ENTER YOUR TABLE NUMBER" name="tableNum" ngModel required>
         <div class="tableNum" *ngIf="tableNumForm.controls['tableNum'].invalid && tableNumForm.controls['tableNum'].touched">
           Table Number is required.
         </div>
